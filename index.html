@@ -1,0 +1,1763 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lopes Veículos · Seminovos</title>
+<meta name="description" content="Lopes Veículos: seminovos com procedência. Veja o estoque, compre à vista, financiado ou com troca, e fale direto com um consultor no WhatsApp.">
+<meta name="theme-color" content="#131418">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lopes Veículos">
+<meta property="og:description" content="Lopes Veículos: seminovos com procedência. Veja o estoque, compre à vista, financiado ou com troca, e fale direto com um consultor no WhatsApp.">
+<meta property="og:image" content="img/logo-lopes.jpg">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Cinzel:wght@500;600;700&display=swap">
+</head>
+<body>
+<style>
+:root{
+  /* Layout: showroom noturno. Coluna de 1200px; as fotos fazem a vitrine; o vermelho da logo fica só para ação, preço e o traço do carro. */
+  --asphalt:#131418;
+  --graphite:#1A1C21;
+  --steel:#23262C;
+  --steel-hi:#2B2E35;
+  --rim:#343740;
+  --chalk:#F4F2ED;
+  --fog:#A9ACB3;
+  --smoke:#787C85;
+  --brake:#D5272F;
+  --brake-hi:#EA3A42;
+  --brake-glow:rgba(213,39,47,.32);
+  --white:#FFFFFF;
+  --zap:#25D366;
+  --zap-ink:#06301A;
+  --plate-blue:#1D4FA3;
+  --plate-ink:#121317;
+  --shade:rgba(8,9,11,.74);
+  --display:"Cinzel","Trajan Pro",Georgia,"Times New Roman",serif;
+  --ui:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --r:6px;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--asphalt);color:var(--chalk);font-family:var(--ui);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;margin:0}
+[hidden]{display:none!important}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--asphalt)}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brake-hi);outline-offset:3px}
+::selection{background:var(--brake);color:var(--white)}
+
+.wrap{max-width:1248px;margin-inline:auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+@media (max-width:600px){.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}}
+
+/* ---------- type ---------- */
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:600;letter-spacing:.02em;line-height:1.08;text-wrap:balance}
+p{margin:0}
+.eyebrow{margin:0;font-family:var(--ui);font-weight:600;font-size:12px;line-height:1.2;font-stretch:125%;letter-spacing:.2em;text-transform:uppercase;color:var(--brake-hi)}
+.h2{font-size:clamp(30px,3.6vw,44px)}
+.lead{color:var(--fog);font-size:17px;max-width:60ch}
+.muted{color:var(--fog)}
+.num{font-variant-numeric:tabular-nums}
+
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head > div{display:grid;gap:12px;min-width:0}
+.band{padding-block:88px}
+.band-graphite{background:var(--graphite)}
+.band-tight{padding-block:56px}
+@media (max-width:700px){.band{padding-block:60px}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:4px;border:1px solid transparent;background:none;cursor:pointer;text-decoration:none;font-family:var(--ui);font-weight:700;font-size:13px;font-stretch:115%;letter-spacing:.12em;text-transform:uppercase;line-height:1;white-space:nowrap;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-red{background:var(--brake);color:var(--white)}
+.btn-red:hover{background:var(--brake-hi)}
+.btn-ghost{border-color:var(--rim);color:var(--chalk)}
+.btn-ghost:hover{border-color:var(--chalk)}
+.btn-zap{background:var(--zap);color:var(--zap-ink)}
+.btn-zap:hover{filter:brightness(1.08)}
+.btn-sm{min-height:40px;padding:0 16px;font-size:12px}
+.btn-block{width:100%}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;color:var(--chalk);text-decoration:none;font-weight:600;font-size:14px;font-stretch:112%;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--brake);padding-bottom:4px}
+.link-arrow svg{width:16px;height:16px;transition:transform .2s}
+.link-arrow:hover svg{transform:translateX(4px)}
+.icon-btn{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid var(--rim);background:none;cursor:pointer;color:var(--chalk);text-decoration:none;flex:none}
+.icon-btn:hover{border-color:var(--chalk)}
+.icon-btn svg{width:19px;height:19px}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(19,20,24,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rim)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.brand{display:inline-flex;flex-direction:column;align-items:center;gap:1px;text-decoration:none;flex:none}
+.brand .carline{width:86px;height:auto;margin-bottom:-1px}
+.brand-name{font-family:var(--display);font-weight:700;font-size:23px;line-height:1;letter-spacing:.05em}
+.brand-sub{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:600;font-size:8px;letter-spacing:.42em;line-height:1;margin-right:-.42em}
+.brand-sub::before,.brand-sub::after{content:"";width:10px;height:1px;background:var(--brake)}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{position:relative;padding:10px 14px;text-decoration:none;font-size:14px;font-weight:500;color:var(--fog);transition:color .2s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--chalk)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;background:var(--brake);box-shadow:0 0 10px var(--brake-glow)}
+.nav-tools{display:flex;align-items:center;gap:10px}
+.menu-btn{display:none}
+@media (max-width:980px){
+  .nav,.nav-tools .btn{display:none}
+  .menu-btn{display:inline-grid}
+}
+.drawer{position:fixed;inset:0;z-index:70;background:var(--asphalt);padding:calc(20px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:28px;overflow-y:auto}
+.drawer-top{display:flex;justify-content:space-between;align-items:center}
+.drawer nav{display:grid}
+.drawer nav a{font-family:var(--display);font-size:30px;font-weight:600;text-decoration:none;padding:14px 0;border-bottom:1px solid var(--rim);display:flex;justify-content:space-between;align-items:center}
+.drawer nav a[aria-current="page"]{color:var(--brake-hi)}
+.drawer .btn{width:100%}
+
+/* ---------- car line signature ---------- */
+.carline{display:block;overflow:visible}
+.carline path{fill:none;stroke:var(--brake);stroke-linecap:round;stroke-linejoin:round}
+.carline .cl-main{stroke-width:11}
+.carline .cl-win{stroke-width:6.5}
+.carline .cl-bot{stroke-width:7.5}
+.carline.draw path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s cubic-bezier(.6,.05,.2,1) forwards}
+.carline.draw .cl-win{animation-delay:.55s}
+.carline.draw .cl-bot{animation-delay:.25s;animation-duration:1.3s}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-block:64px 80px;overflow:hidden;background:radial-gradient(900px 520px at 78% 30%,rgba(213,39,47,.13),transparent 70%),var(--asphalt)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero-line{width:min(440px,78%);height:auto;margin-left:-6px}
+.hero-title{font-size:clamp(38px,5.2vw,66px);font-weight:600;line-height:1.02;letter-spacing:.01em}
+.hero-rule{display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.38em;text-transform:uppercase;color:var(--chalk)}
+.hero-rule::before,.hero-rule::after{content:"";height:1px;width:44px;background:var(--brake)}
+.hero-lead{color:var(--fog);font-size:18px;max-width:52ch}
+.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:0;background:var(--steel);border:1px solid var(--rim);border-radius:var(--r);padding:6px;margin-top:6px}
+.quick label{display:grid;gap:2px;padding:8px 14px;border-right:1px solid var(--rim);font-size:11px;font-weight:600;font-stretch:118%;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);min-width:0}
+.quick select{appearance:none;-webkit-appearance:none;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A9ACB3' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right center;border:0;padding:2px 18px 2px 0;font-size:15px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--chalk);cursor:pointer;width:100%;text-overflow:ellipsis}
+.quick select option{background:var(--steel);color:var(--chalk)}
+.quick .btn{align-self:stretch;margin-left:6px}
+.hero-proof{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--fog);font-size:14px}
+.hero-proof li{display:flex;align-items:center;gap:8px}
+.hero-proof li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brake);box-shadow:0 0 8px var(--brake-glow)}
+.hero-proof b{color:var(--chalk);font-weight:700}
+
+.hero-visual{position:relative;min-width:0;padding-bottom:28px}
+.hero-photo{display:block;position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.6;max-width:100%;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 72%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.hero-photo:hover img{transform:scale(1.035)}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,11,13,.55))}
+.hero-tag{position:absolute;left:-28px;bottom:0;display:grid;gap:4px;min-width:250px;padding:18px 22px;background:var(--steel);border:1px solid var(--rim);border-radius:var(--r);text-decoration:none;box-shadow:0 24px 50px -20px rgba(0,0,0,.8)}
+.hero-tag strong{font-family:var(--display);font-size:24px;font-weight:600;line-height:1.1}
+.hero-tag .meta{color:var(--fog);font-size:14px}
+.hero-tag .price{font-size:22px}
+.taillight{position:absolute;left:8%;right:8%;bottom:10px;height:3px;border-radius:3px;background:var(--brake);box-shadow:0 0 18px 2px var(--brake-glow),0 0 50px 6px var(--brake-glow);transform-origin:center;animation:sweep 1.4s .5s cubic-bezier(.6,.05,.2,1) both}
+@keyframes sweep{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@media (max-width:900px){
+  .hero{padding-block:36px 56px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-photo{aspect-ratio:4/3.4}
+  .hero-tag{position:relative;left:auto;bottom:auto;margin:-56px 14px 0;min-width:0}
+  .hero-visual{padding-bottom:22px}
+  .taillight{bottom:4px}
+}
+@media (max-width:520px){.hero-rule{font-size:11px;letter-spacing:.22em;gap:10px}.hero-rule::before,.hero-rule::after{width:22px}}
+@media (max-width:640px){
+  .quick{grid-template-columns:1fr 1fr}
+  .quick label{border-right:0;border-bottom:1px solid var(--rim)}
+  .quick label:nth-child(3){grid-column:1/-1}
+  .quick .btn{grid-column:1/-1;margin:6px 0 0;min-height:48px}
+}
+
+/* ---------- price ---------- */
+.price{font-family:var(--ui);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em;color:var(--chalk);white-space:nowrap}
+.price small{font-size:.58em;font-weight:600;color:var(--fog);margin-right:4px;letter-spacing:.04em}
+
+/* ---------- plate badge (padrão Mercosul) ---------- */
+.plate{display:inline-grid;grid-template-rows:auto 1fr;width:74px;border-radius:4px;overflow:hidden;background:var(--white);color:var(--plate-ink);border:1px solid #d9dbe0;vertical-align:middle;line-height:1}
+.plate i{font-style:normal;background:var(--plate-blue);color:var(--white);font-size:6.5px;font-weight:700;letter-spacing:.2em;text-align:center;padding:2px 0 1px}
+.plate b{font-size:12px;font-weight:800;font-stretch:75%;letter-spacing:.06em;text-align:center;padding:4px 0 3px}
+
+/* ---------- showroom (vitrine) ---------- */
+.showroom{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:start}
+.sr-stage{display:grid;gap:12px;min-width:0}
+.sr-frame{position:relative;aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;background:var(--steel)}
+.sr-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;transition:opacity .45s ease}
+.sr-frame img.is-out{opacity:0}
+.sr-frame .tagline{position:absolute;left:16px;top:16px;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:3px;background:var(--brake);color:var(--white);font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.14em;text-transform:uppercase}
+.badge-dark{background:var(--shade);color:var(--chalk);backdrop-filter:blur(6px)}
+.thumbs{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:none;width:76px;aspect-ratio:1;border-radius:4px;overflow:hidden;border:2px solid transparent;padding:0;background:var(--steel);cursor:pointer;opacity:.6;transition:opacity .2s,border-color .2s}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 65%}
+.thumb:hover{opacity:1}
+.thumb[aria-current="true"]{opacity:1;border-color:var(--brake)}
+.sr-info{display:grid;gap:22px;min-width:0;padding-top:8px}
+.sr-brand{color:var(--fog);font-size:14px;font-weight:600;font-stretch:118%;letter-spacing:.18em;text-transform:uppercase}
+.sr-title{font-size:clamp(40px,4.6vw,60px);line-height:1}
+.sr-ver{color:var(--fog);font-size:18px;margin-top:-10px}
+.spec-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rim);border-bottom:1px solid var(--rim)}
+.spec-row > div{display:grid;gap:6px;padding:16px 12px 16px 0}
+.spec-row > div + div{padding-left:14px;border-left:1px solid var(--rim)}
+.spec-row dt{font-size:11px;font-weight:600;font-stretch:118%;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke)}
+.spec-row dd{margin:0;font-size:16px;font-weight:600;font-variant-numeric:tabular-nums}
+.sr-price{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.sr-price .price{font-size:40px}
+.sr-price span{color:var(--fog);font-size:14px}
+.sr-actions{display:flex;gap:12px;flex-wrap:wrap}
+.sr-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:40px}
+.sr-tab{display:flex;align-items:center;gap:12px;padding:10px;border-radius:var(--r);border:1px solid var(--rim);background:var(--steel);cursor:pointer;text-align:left;position:relative;overflow:hidden;transition:border-color .2s,background .2s}
+.sr-tab img{width:52px;height:52px;border-radius:4px;object-fit:cover;object-position:50% 68%;flex:none}
+.sr-tab span{display:grid;gap:2px;min-width:0}
+.sr-tab b{font-family:var(--display);font-size:17px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-tab small{color:var(--fog);font-size:12px}
+.sr-tab:hover{border-color:var(--smoke)}
+.sr-tab[aria-selected="true"]{border-color:var(--brake);background:var(--steel-hi)}
+.sr-tab .prog{position:absolute;left:0;bottom:0;height:2px;width:100%;transform-origin:left;transform:scaleX(0);background:var(--brake)}
+.sr-tab[aria-selected="true"] .prog{transform:scaleX(1)}
+.showroom-wrap.auto .sr-tab[aria-selected="true"] .prog{animation:prog 7s linear forwards}
+.showroom-wrap.auto:hover .sr-tab .prog,.showroom-wrap.auto:focus-within .sr-tab .prog{animation-play-state:paused}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:900px){.showroom{grid-template-columns:1fr;gap:28px}.spec-row{grid-template-columns:repeat(2,minmax(0,1fr))}.spec-row > div:nth-child(3){padding-left:0;border-left:0}.spec-row > div:nth-child(n+3){border-top:1px solid var(--rim)}}
+
+/* ---------- cards ---------- */
+.card{position:relative;display:flex;flex-direction:column;background:var(--steel);border:1px solid var(--rim);border-radius:var(--r);overflow:hidden;transition:border-color .25s,transform .25s}
+.card:hover{border-color:var(--smoke)}
+.card-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--graphite)}
+.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 72%;transition:opacity .45s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.card-media img.alt{opacity:0}
+.card:hover .card-media img.alt{opacity:1}
+.card:hover .card-media img{transform:scale(1.04)}
+.card-media .badge{position:absolute;left:12px;top:12px;z-index:2}
+.fav{position:absolute;right:12px;top:12px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--shade);color:var(--chalk);cursor:pointer;backdrop-filter:blur(6px)}
+.fav svg{width:18px;height:18px}
+.fav[aria-pressed="true"]{color:var(--brake-hi)}
+.fav[aria-pressed="true"] svg path{fill:currentColor}
+.card-body{display:flex;flex-direction:column;gap:6px;padding:18px 18px 18px;flex:1}
+.card-brand{font-size:11px;font-weight:600;font-stretch:118%;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke)}
+.card-title{font-size:25px;line-height:1.1}
+.card-title a{text-decoration:none}
+.card-title a::after{content:"";position:absolute;inset:0;z-index:1}
+.card-ver{color:var(--fog);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-specs{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.card-specs li{font-size:12.5px;font-weight:500;font-variant-numeric:tabular-nums;padding:4px 8px;border-radius:3px;background:var(--graphite);color:var(--fog)}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:16px}
+.card-foot .price{font-size:23px}
+.card-foot .btn{position:relative;z-index:2}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:980px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.grid-3{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- carousel ---------- */
+.carousel{position:relative}
+.car-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px}
+.car-track::-webkit-scrollbar{display:none}
+.car-track > *{scroll-snap-align:start}
+@media (max-width:900px){.car-track{grid-auto-columns:calc((100% - 20px)/2)}}
+@media (max-width:560px){.car-track{grid-auto-columns:84%}}
+.car-ctrl{display:flex;align-items:center;gap:18px;margin-top:28px}
+.car-bar{flex:1;height:2px;background:var(--rim);border-radius:2px;position:relative;overflow:hidden}
+.car-bar i{position:absolute;left:0;top:0;bottom:0;width:30%;background:var(--brake);box-shadow:0 0 10px var(--brake-glow);border-radius:2px;transition:transform .3s ease,width .3s ease}
+
+/* ---------- WhatsApp section ---------- */
+.zap-band{position:relative;overflow:hidden;background:radial-gradient(700px 400px at 0% 50%,rgba(213,39,47,.18),transparent 70%),var(--graphite);border-top:1px solid var(--rim);border-bottom:1px solid var(--rim)}
+.zap-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:44px}
+.zap-copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:16px}
+.zap-copy .eyebrow,.zap-copy h2{grid-column:1}
+.zap-copy .lead{grid-column:2;grid-row:2;align-self:end}
+.zap-copy h2{font-size:clamp(34px,4.4vw,54px)}
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.person{display:grid;gap:14px;min-width:0;padding:22px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim)}
+.person-top{display:flex;align-items:center;gap:14px}
+.avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--asphalt);border:1px solid var(--brake);font-family:var(--display);font-size:22px;font-weight:700;color:var(--chalk);flex:none}
+.person h3{font-size:22px}
+.person-role{color:var(--fog);font-size:13px}
+.tel{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:4px;background:var(--graphite);font-variant-numeric:tabular-nums;font-weight:600;font-size:15px}
+.tel span{user-select:all;-webkit-user-select:all}
+.copy{border:0;background:none;color:var(--fog);cursor:pointer;display:inline-grid;place-items:center;padding:4px}
+.copy:hover{color:var(--chalk)}
+.copy svg{width:16px;height:16px}
+@media (max-width:900px){.zap-grid{gap:32px}.zap-copy{grid-template-columns:minmax(0,1fr)}.zap-copy .lead{grid-column:1;grid-row:auto}}
+@media (max-width:860px){.people{grid-template-columns:1fr}}
+
+/* ---------- benefits / steps ---------- */
+.benefits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rim)}
+.benefit{display:grid;gap:12px;align-content:start;padding:28px 24px 8px 0}
+.benefit + .benefit{padding-left:24px;border-left:1px solid var(--rim)}
+.benefit svg{width:30px;height:30px;color:var(--brake-hi)}
+.benefit h3{font-family:var(--ui);font-size:18px;font-weight:700;letter-spacing:0}
+.benefit p{color:var(--fog);font-size:15px}
+@media (max-width:900px){.benefits{grid-template-columns:repeat(2,minmax(0,1fr))}.benefit:nth-child(3){padding-left:0;border-left:0}.benefit:nth-child(n+3){border-top:1px solid var(--rim);margin-top:20px}}
+@media (max-width:520px){.benefits{grid-template-columns:1fr}.benefit + .benefit{padding-left:0;border-left:0;border-top:1px solid var(--rim);margin-top:12px}}
+
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s}
+.step{position:relative;display:grid;gap:10px;padding:26px 22px 24px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim);counter-increment:s}
+.step::before{content:counter(s);font-family:var(--display);font-size:44px;font-weight:600;line-height:1;color:var(--brake)}
+.step h3{font-family:var(--ui);font-size:17px;font-weight:700;letter-spacing:0}
+.step p{color:var(--fog);font-size:14.5px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* ---------- sell banner ---------- */
+.sell{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) auto;gap:32px;align-items:center;padding:48px;border-radius:var(--r);background:linear-gradient(110deg,var(--steel-hi),var(--steel));border:1px solid var(--rim);overflow:hidden}
+.sell .carline{position:absolute;right:-40px;bottom:-14px;width:520px;opacity:.16;pointer-events:none}
+.sell > div{display:grid;gap:12px;position:relative}
+.sell h2{font-size:clamp(28px,3.4vw,40px)}
+.sell .btn{position:relative}
+@media (max-width:760px){.sell{grid-template-columns:1fr;padding:32px 22px}.sell .carline{width:340px}}
+
+/* ---------- instagram ---------- */
+.ig{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.ig-copy{display:grid;gap:18px}
+.ig-handle{font-family:var(--display);font-size:clamp(30px,4vw,50px);font-weight:600;line-height:1.05;word-break:break-word}
+.ig-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ig-mosaic a{position:relative;display:block;aspect-ratio:1;border-radius:4px;overflow:hidden}
+.ig-mosaic img{width:100%;height:100%;object-fit:cover;object-position:50% 68%;transition:transform .6s ease}
+.ig-mosaic a::after{content:"";position:absolute;inset:0;background:rgba(213,39,47,.0);transition:background .3s}
+.ig-mosaic a:hover::after{background:rgba(213,39,47,.28)}
+.ig-mosaic a:hover img{transform:scale(1.06)}
+@media (max-width:900px){.ig{grid-template-columns:1fr;gap:32px}}
+
+/* ---------- faq ---------- */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px}
+.faq-list{display:grid;border-top:1px solid var(--rim)}
+.faq details{border-bottom:1px solid var(--rim)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;cursor:pointer;font-size:18px;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;border-right:2px solid var(--brake);border-bottom:2px solid var(--brake);transform:rotate(45deg) translate(-3px,-3px);transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(225deg) translate(-3px,-3px)}
+.faq details p{color:var(--fog);padding:0 0 22px;max-width:62ch}
+@media (max-width:900px){.faq{grid-template-columns:1fr;gap:28px}}
+
+/* ---------- page head ---------- */
+.page-head{position:relative;padding-block:56px 44px;border-bottom:1px solid var(--rim);background:radial-gradient(700px 300px at 85% 0%,rgba(213,39,47,.12),transparent 70%),var(--asphalt);overflow:hidden}
+.page-head .wrap{display:grid;gap:14px;position:relative}
+.page-head h1{font-size:clamp(38px,5vw,60px)}
+.page-head .carline{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:-8px;width:360px;opacity:.22}
+@media (max-width:760px){.page-head .carline{width:220px;opacity:.14}}
+
+/* ---------- catalog ---------- */
+.cat{display:grid;grid-template-columns:280px minmax(0,1fr);gap:36px;align-items:start}
+.filters{display:grid;gap:24px;align-content:start}
+.f-group{display:grid;gap:12px}
+.f-group > .f-label{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke)}
+.f-group output{color:var(--chalk);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums}
+.search{position:relative}
+.search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--smoke)}
+.search input{padding-left:42px}
+.field{width:100%;min-height:46px;padding:10px 14px;border-radius:4px;border:1px solid var(--rim);background:var(--graphite);color:var(--chalk);font-family:var(--ui);font-size:15px;font-weight:500;font-stretch:100%;letter-spacing:0;text-transform:none;transition:border-color .2s}
+.field:focus{outline:none;border-color:var(--chalk)}
+.field::placeholder{color:var(--smoke)}
+select.field{appearance:none;-webkit-appearance:none;background:var(--graphite) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23A9ACB3' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;padding-right:38px;cursor:pointer}
+select.field option{background:var(--graphite)}
+textarea.field{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:999px;border:1px solid var(--rim);font-size:14px;font-weight:500;transition:border-color .2s,background .2s,color .2s}
+.chip span em{font-style:normal;color:var(--smoke);font-size:12px;font-variant-numeric:tabular-nums}
+.chip:hover span{border-color:var(--smoke)}
+.chip input:checked + span{background:var(--chalk);border-color:var(--chalk);color:var(--asphalt)}
+.chip input:checked + span em{color:var(--steel-hi)}
+.chip input:focus-visible + span{outline:2px solid var(--brake-hi);outline-offset:2px}
+input[type="range"]{width:100%;accent-color:var(--brake);cursor:pointer}
+.f-foot{display:grid;gap:10px;padding-top:6px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.toolbar p{color:var(--fog);font-size:15px}
+.toolbar p b{color:var(--chalk)}
+.sort{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--fog)}
+.sort .field{min-height:40px;width:auto}
+.only-m{display:none}
+.empty{display:grid;justify-items:start;gap:14px;padding:44px;border:1px dashed var(--rim);border-radius:var(--r)}
+.empty h3{font-size:28px}
+.empty p{color:var(--fog);max-width:52ch}
+.empty div{display:flex;gap:12px;flex-wrap:wrap}
+.f-head{display:none}
+@media (max-width:980px){
+  .cat{grid-template-columns:1fr}
+  .only-m{display:inline-flex}
+  .filters{position:fixed;inset:0;z-index:80;overflow-y:auto;background:var(--asphalt);padding:calc(18px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));transform:translateX(-100%);visibility:hidden;transition:transform .3s ease,visibility .3s}
+  .filters.open{transform:none;visibility:visible}
+  .f-head{display:flex;justify-content:space-between;align-items:center}
+  .f-head h2{font-size:28px}
+}
+
+/* ---------- car page ---------- */
+.crumbs{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--fog);margin-bottom:24px;flex-wrap:wrap}
+.crumbs a{color:var(--fog);text-decoration:none}
+.crumbs a:hover{color:var(--chalk)}
+.crumbs span[aria-current]{color:var(--chalk)}
+.car-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:start}
+.gallery{display:grid;gap:12px;min-width:0}
+.g-main{position:relative;display:block;width:100%;aspect-ratio:5/4;padding:0;border:0;border-radius:var(--r);overflow:hidden;cursor:zoom-in;background:var(--steel)}
+.g-main img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.g-main .badge{position:absolute;right:14px;bottom:14px}
+.g-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--shade);color:var(--chalk);cursor:pointer}
+.g-nav svg{width:20px;height:20px}
+.g-prev{left:14px}.g-next{right:14px}
+.gallery .thumb{width:88px}
+.car-info{display:grid;gap:22px;min-width:0;position:sticky;top:calc(100px + env(safe-area-inset-top,0px))}
+.car-title{font-size:clamp(40px,4.6vw,58px);line-height:1}
+.car-ver{color:var(--fog);font-size:18px;margin-top:-12px}
+.car-price{display:grid;gap:4px;padding:20px 22px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim)}
+.car-price .lbl{font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke)}
+.car-price .price{font-size:42px}
+.car-price .note{color:var(--fog);font-size:14px}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border-top:1px solid var(--rim)}
+.specs > div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--rim)}
+.specs > div:nth-child(odd){padding-right:18px}
+.specs > div:nth-child(even){padding-left:18px;border-left:1px solid var(--rim)}
+.specs dt{display:flex;align-items:center;gap:8px;color:var(--fog);font-size:14px}
+.specs dt svg{width:16px;height:16px;color:var(--smoke)}
+.specs dd{margin:0;font-weight:600;font-size:15px;text-align:right;font-variant-numeric:tabular-nums}
+.car-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.car-actions .btn-red{grid-column:1/-1;min-height:56px;font-size:14px}
+.fav-inline svg{width:18px;height:18px}
+.fav-inline[aria-pressed="true"]{color:var(--brake-hi);border-color:var(--brake)}
+.fav-inline[aria-pressed="true"] svg path{fill:currentColor}
+.car-more{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;margin-top:64px;padding-top:44px;border-top:1px solid var(--rim)}
+.car-more > div{display:grid;gap:16px;align-content:start}
+.car-more h2{font-size:28px}
+.car-more p{color:var(--fog);max-width:62ch}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{width:20px;height:20px;color:var(--brake-hi);flex:none;margin-top:2px}
+.disclaimer{color:var(--smoke);font-size:13px}
+@media (max-width:980px){.car-grid,.car-more{grid-template-columns:1fr;gap:32px}.car-info{position:static}}
+@media (max-width:480px){.specs{grid-template-columns:1fr}.specs > div:nth-child(odd){padding-right:0}.specs > div:nth-child(even){padding-left:0;border-left:0}.car-actions{grid-template-columns:1fr}}
+
+/* ---------- dialogs ---------- */
+dialog{border:0;padding:0;background:none;color:var(--chalk);max-width:100vw;max-height:100vh}
+dialog::backdrop{background:rgba(6,7,9,.78);backdrop-filter:blur(4px)}
+.sheet{width:min(620px,100vw);max-height:min(92vh,100%);margin:auto}
+.sheet-inner{display:grid;gap:22px;max-height:92vh;overflow-y:auto;background:var(--graphite);border:1px solid var(--rim);border-radius:var(--r);padding:26px}
+.sheet-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center}
+.sheet-head img{width:84px;height:84px;border-radius:4px;object-fit:cover;object-position:50% 70%}
+.sheet-head h2{font-size:26px}
+.sheet-head .price{font-size:18px;margin-top:4px}
+.form{display:grid;gap:20px}
+.form fieldset{border:0;margin:0;padding:0;display:grid;gap:12px;min-width:0}
+.form legend,.form .lbl{padding:0;margin-bottom:2px;font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke)}
+.form label.f{display:grid;gap:8px;font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);min-width:0}
+.form label.f .req{color:var(--brake-hi)}
+.form label.f > span:first-child{display:block}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:560px){.row2,.row3{grid-template-columns:1fr}}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.opt{position:relative;cursor:pointer}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:grid;gap:6px;height:100%;padding:16px 14px;border-radius:var(--r);border:1px solid var(--rim);background:var(--steel);transition:border-color .2s,background .2s}
+.opt span svg{width:24px;height:24px;color:var(--brake-hi)}
+.opt b{font-size:15px}
+.opt small{color:var(--fog);font-size:12.5px;line-height:1.35}
+.opt:hover span{border-color:var(--smoke)}
+.opt input:checked + span{border-color:var(--brake);background:var(--steel-hi);box-shadow:inset 0 0 0 1px var(--brake)}
+.opt input:focus-visible + span{outline:2px solid var(--brake-hi);outline-offset:2px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.cond{display:grid;gap:14px;padding:16px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim)}
+.msg-preview{display:grid;gap:8px}
+.msg-preview pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--ui);font-size:13.5px;line-height:1.5;color:var(--fog);background:var(--asphalt);border:1px solid var(--rim);border-left:3px solid var(--zap);border-radius:4px;padding:14px 16px;max-height:200px;overflow:auto}
+.fine{color:var(--smoke);font-size:13px;text-align:center}
+.err{color:var(--brake-hi);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none}
+.field[aria-invalid="true"]{border-color:var(--brake-hi)}
+.x{width:40px;height:40px;border-radius:50%;border:1px solid var(--rim);background:none;cursor:pointer;display:grid;place-items:center;color:var(--chalk);align-self:start}
+.x svg{width:18px;height:18px}
+@media (max-width:640px){
+  .sheet{width:100vw;max-height:100%;margin:auto 0 0}
+  .sheet-inner{border-radius:12px 12px 0 0;max-height:94vh;padding:20px max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .sheet-head img{width:64px;height:64px}
+}
+
+.lightbox{width:100vw;height:100vh;max-height:100vh;margin:0;background:rgba(8,9,11,.97)}
+.lightbox[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));gap:16px}
+.lb-top p{font-family:var(--display);font-size:20px}
+.lb-top span{color:var(--fog);font-size:14px;font-variant-numeric:tabular-nums}
+.lb-stage{position:relative;display:grid;place-items:center;min-height:0;padding:0 64px}
+.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px}
+.lb-stage .g-prev{left:max(12px,env(safe-area-inset-left,0px))}.lb-stage .g-next{right:max(12px,env(safe-area-inset-right,0px))}
+.lb-thumbs{display:flex;justify-content:center;gap:8px;padding:14px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-x:auto}
+.lb-thumbs .thumb{width:60px}
+@media (max-width:640px){.lb-stage{padding:0 8px}.lb-stage .g-nav{background:rgba(8,9,11,.6)}}
+
+/* ---------- sell page ---------- */
+.sell-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:start}
+.panel{display:grid;gap:22px;padding:28px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim)}
+.panel h2{font-size:26px}
+.panel .field{background:var(--graphite)}
+.sell-side{position:sticky;top:calc(100px + env(safe-area-inset-top,0px));display:grid;gap:18px}
+.tips{list-style:none;margin:0;padding:0;display:grid;gap:10px;color:var(--fog);font-size:14.5px}
+.tips li{display:flex;gap:10px}
+.tips svg{width:18px;height:18px;color:var(--brake-hi);flex:none;margin-top:2px}
+.mini-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:10px}
+.mini-steps li{list-style:none;display:flex;gap:12px;align-items:flex-start;color:var(--fog);font-size:14.5px}
+.mini-steps b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid var(--brake);font-family:var(--display);color:var(--chalk);flex:none}
+.mini-steps{padding:0}
+@media (max-width:980px){.sell-grid{grid-template-columns:1fr}.sell-side{position:static}}
+@media (max-width:640px){.mini-steps{grid-template-columns:1fr}.panel{padding:20px 16px}}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.about-mark{display:grid;justify-items:center;gap:10px;padding:56px 32px;border-radius:var(--r);background:radial-gradient(circle at 50% 40%,var(--steel-hi),var(--graphite) 70%);border:1px solid var(--rim)}
+.about-mark .carline{width:min(420px,90%)}
+.about-mark .w1{font-family:var(--display);font-weight:700;font-size:clamp(56px,8vw,96px);line-height:.95;letter-spacing:.04em}
+.about-mark .w2{display:flex;align-items:center;gap:16px;font-family:var(--display);font-weight:600;font-size:clamp(14px,2vw,20px);letter-spacing:.45em;margin-right:-.45em}
+.about-mark .w2::before,.about-mark .w2::after{content:"";width:46px;height:2px;background:var(--brake)}
+.about-copy{display:grid;gap:18px}
+.about-copy p:not(.eyebrow){color:var(--fog);font-size:17px;max-width:58ch}
+.about-copy p strong{color:var(--chalk)}
+@media (max-width:900px){.about{grid-template-columns:1fr;gap:36px}}
+
+.contact-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.ig-card{grid-column:span 6;position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:center;padding:36px;border-radius:var(--r);text-decoration:none;overflow:hidden;background:linear-gradient(120deg,#2a1215 0%,var(--steel) 55%);border:1px solid var(--brake)}
+.ig-card .ig-icon{width:84px;height:84px;border-radius:22px;display:grid;place-items:center;background:var(--brake);color:var(--white);flex:none}
+.ig-card .ig-icon svg{width:44px;height:44px}
+.ig-card > div{display:grid;gap:6px;min-width:0}
+.ig-card .ig-handle{font-size:clamp(28px,4vw,46px)}
+.ig-card p:not(.eyebrow):not(.ig-handle){color:var(--fog)}
+.c-card{grid-column:span 2;display:grid;gap:14px;align-content:start;padding:26px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim);min-width:0}
+.c-card h3{font-family:var(--ui);font-size:13px;font-weight:700;font-stretch:118%;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke);display:flex;align-items:center;gap:10px}
+.c-card h3 svg{width:18px;height:18px;color:var(--brake-hi)}
+.c-card .big{font-size:18px;font-weight:600;word-break:break-word}
+.c-card .big span{user-select:all;-webkit-user-select:all}
+.c-list{display:grid;gap:10px}
+.c-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.c-row div{display:grid;gap:2px;min-width:0}
+.c-row b{font-size:15px}
+.c-row span{color:var(--fog);font-size:14px;font-variant-numeric:tabular-nums;user-select:all;-webkit-user-select:all}
+@media (max-width:980px){.c-card{grid-column:span 3}.c-card:first-of-type{grid-column:span 6}}
+@media (max-width:700px){.contact-grid{grid-template-columns:1fr}.ig-card,.c-card,.c-card:first-of-type{grid-column:auto}.ig-card{grid-template-columns:1fr;padding:26px 22px;gap:18px}.ig-card .ig-icon{width:64px;height:64px;border-radius:18px}}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--graphite);border-top:1px solid var(--rim);padding-block:64px calc(28px + env(safe-area-inset-bottom,0px))}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:40px}
+.foot-grid h4{margin:0 0 16px;font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke)}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px}
+.foot-grid ul a{color:var(--fog);text-decoration:none}
+.foot-grid ul a:hover{color:var(--chalk)}
+.foot-brand{display:grid;gap:18px;justify-items:start}
+.foot-brand p{color:var(--fog);font-size:15px;max-width:36ch}
+.foot-brand .brand .carline{width:110px}
+.foot-brand .brand-name{font-size:30px}
+.foot-brand .brand-sub{font-size:10px}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:24px;border-top:1px solid var(--rim);color:var(--smoke);font-size:13px}
+.foot-bottom a{color:var(--fog)}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media (max-width:480px){.foot-grid{grid-template-columns:1fr}}
+
+/* ---------- floating WhatsApp ---------- */
+.fab{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:65;display:grid;justify-items:end;gap:12px}
+.fab-btn{width:60px;height:60px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--zap);color:var(--zap-ink);cursor:pointer;box-shadow:0 12px 30px -8px rgba(0,0,0,.7);transition:transform .2s}
+.fab-btn:hover{transform:scale(1.06)}
+.fab-btn svg{width:30px;height:30px}
+.fab-panel{width:min(300px,calc(100vw - 40px));display:grid;gap:4px;padding:14px;border-radius:var(--r);background:var(--steel);border:1px solid var(--rim);box-shadow:0 24px 60px -20px rgba(0,0,0,.9)}
+.fab-panel p{font-size:13px;color:var(--fog);padding:4px 6px 8px}
+.fab-panel a{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:4px;text-decoration:none}
+.fab-panel a:hover{background:var(--steel-hi)}
+.fab-panel .avatar{width:38px;height:38px;font-size:16px}
+.fab-panel a div{display:grid;gap:1px}
+.fab-panel a b{font-size:15px}
+.fab-panel a span{color:var(--fog);font-size:13px;font-variant-numeric:tabular-nums}
+
+.toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:90;padding:12px 18px;border-radius:4px;background:var(--chalk);color:var(--asphalt);font-weight:600;font-size:14px;pointer-events:none;transition:opacity .25s,transform .25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .carline.draw path{stroke-dashoffset:0}
+}
+
+</style>
+<a class="sr-only" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a class="brand" href="#inicio" aria-label="Lopes Veículos, página inicial">
+      <svg class="carline" viewBox="0 0 640 165" aria-hidden="true" focusable="false"><path class="cl-main" d="M13.0 127.6C15.0 126.8 17.0 126.1 19.0 125.5C26.2 122.6 44.2 114.0 56.0 109.8C67.8 105.6 78.3 102.8 90.0 100.2C101.7 97.5 110.3 96.4 126.0 94.0C141.7 91.6 167.8 87.6 184.0 86.0C200.2 84.4 213.5 85.0 223.0 84.3C232.5 83.6 236.3 82.9 241.0 81.9C245.7 80.9 247.7 79.9 251.0 78.3C254.3 76.7 257.7 74.6 261.0 72.2C264.3 69.7 265.8 68.6 271.0 63.7C276.2 58.7 286.7 47.4 292.0 42.4C297.3 37.4 299.5 35.9 303.0 33.4C306.5 31.0 309.2 29.5 313.0 27.7C316.8 26.0 321.5 24.4 326.0 23.1C330.5 21.7 332.7 21.0 340.0 19.7C347.3 18.5 362.3 16.5 370.0 15.6C377.7 14.8 379.2 14.9 386.0 14.6C392.8 14.3 402.7 13.7 411.0 13.7C419.3 13.7 427.2 13.8 436.0 14.6C444.8 15.3 456.5 16.8 464.0 18.2C471.5 19.5 475.7 21.1 481.0 22.8C486.3 24.6 491.5 26.7 496.0 28.7C500.5 30.8 498.2 28.7 508.0 35.2C517.8 41.7 545.0 61.0 555.0 67.8C565.0 74.5 563.2 73.2 568.0 75.6C572.8 77.9 577.0 79.8 584.0 81.8C591.0 83.7 604.3 85.4 610.0 87.3C615.7 89.2 615.8 90.8 618.0 93.3C620.2 95.8 621.9 98.9 623.0 102.0C624.1 105.1 624.2 109.0 624.5 112.0C624.8 115.0 624.5 118.7 624.5 120.0"/><path class="cl-win" d="M277.5 75.6C278.6 74.8 279.8 73.9 281.0 72.9C286.5 69.3 301.8 57.5 310.0 52.4C318.2 47.4 325.0 44.6 330.0 42.4C335.0 40.3 336.0 40.3 340.0 39.3C344.0 38.4 346.0 37.7 354.0 36.6C362.0 35.6 375.2 33.6 388.0 33.0C400.8 32.4 421.7 32.8 431.0 33.1C440.3 33.4 439.3 33.8 444.0 34.7C448.7 35.5 454.7 36.8 459.0 38.1C463.3 39.3 466.2 40.3 470.0 41.9C473.8 43.6 477.8 45.6 482.0 48.2C486.2 50.8 490.8 54.3 495.0 57.6C499.2 60.9 504.3 66.0 507.0 68.0"/><path class="cl-bot" d="M64.0 150.7C90.7 148.9 177.0 142.8 224.0 140.0C271.0 137.3 314.3 135.5 346.0 134.1C377.7 132.8 391.7 132.4 414.0 132.0C436.3 131.6 451.0 131.0 480.0 132.0C509.0 133.0 570.0 136.9 588.0 137.9"/></svg>
+      <span class="brand-name">LOPES</span>
+      <span class="brand-sub">VEÍCULOS</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio" data-nav="inicio">Início</a>
+      <a href="#estoque" data-nav="estoque">Estoque</a>
+      <a href="#vender" data-nav="vender">Vender meu carro</a>
+      <a href="#sobre" data-nav="sobre">Sobre</a>
+    </nav>
+    <div class="nav-tools">
+      <a class="icon-btn" id="hdr-ig" href="#" target="_blank" rel="noopener" aria-label="Instagram da Lopes Veículos"></a>
+      <button class="btn btn-red btn-sm" type="button" data-fab-open><span data-icon="zap"></span>Falar no WhatsApp</button>
+      <button class="icon-btn menu-btn" type="button" id="menu-open" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"><span data-icon="menu"></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer-top">
+    <a class="brand" href="#inicio" aria-label="Lopes Veículos, página inicial">
+      <svg class="carline" viewBox="0 0 640 165" aria-hidden="true" focusable="false"><path class="cl-main" d="M13.0 127.6C15.0 126.8 17.0 126.1 19.0 125.5C26.2 122.6 44.2 114.0 56.0 109.8C67.8 105.6 78.3 102.8 90.0 100.2C101.7 97.5 110.3 96.4 126.0 94.0C141.7 91.6 167.8 87.6 184.0 86.0C200.2 84.4 213.5 85.0 223.0 84.3C232.5 83.6 236.3 82.9 241.0 81.9C245.7 80.9 247.7 79.9 251.0 78.3C254.3 76.7 257.7 74.6 261.0 72.2C264.3 69.7 265.8 68.6 271.0 63.7C276.2 58.7 286.7 47.4 292.0 42.4C297.3 37.4 299.5 35.9 303.0 33.4C306.5 31.0 309.2 29.5 313.0 27.7C316.8 26.0 321.5 24.4 326.0 23.1C330.5 21.7 332.7 21.0 340.0 19.7C347.3 18.5 362.3 16.5 370.0 15.6C377.7 14.8 379.2 14.9 386.0 14.6C392.8 14.3 402.7 13.7 411.0 13.7C419.3 13.7 427.2 13.8 436.0 14.6C444.8 15.3 456.5 16.8 464.0 18.2C471.5 19.5 475.7 21.1 481.0 22.8C486.3 24.6 491.5 26.7 496.0 28.7C500.5 30.8 498.2 28.7 508.0 35.2C517.8 41.7 545.0 61.0 555.0 67.8C565.0 74.5 563.2 73.2 568.0 75.6C572.8 77.9 577.0 79.8 584.0 81.8C591.0 83.7 604.3 85.4 610.0 87.3C615.7 89.2 615.8 90.8 618.0 93.3C620.2 95.8 621.9 98.9 623.0 102.0C624.1 105.1 624.2 109.0 624.5 112.0C624.8 115.0 624.5 118.7 624.5 120.0"/><path class="cl-win" d="M277.5 75.6C278.6 74.8 279.8 73.9 281.0 72.9C286.5 69.3 301.8 57.5 310.0 52.4C318.2 47.4 325.0 44.6 330.0 42.4C335.0 40.3 336.0 40.3 340.0 39.3C344.0 38.4 346.0 37.7 354.0 36.6C362.0 35.6 375.2 33.6 388.0 33.0C400.8 32.4 421.7 32.8 431.0 33.1C440.3 33.4 439.3 33.8 444.0 34.7C448.7 35.5 454.7 36.8 459.0 38.1C463.3 39.3 466.2 40.3 470.0 41.9C473.8 43.6 477.8 45.6 482.0 48.2C486.2 50.8 490.8 54.3 495.0 57.6C499.2 60.9 504.3 66.0 507.0 68.0"/><path class="cl-bot" d="M64.0 150.7C90.7 148.9 177.0 142.8 224.0 140.0C271.0 137.3 314.3 135.5 346.0 134.1C377.7 132.8 391.7 132.4 414.0 132.0C436.3 131.6 451.0 131.0 480.0 132.0C509.0 133.0 570.0 136.9 588.0 137.9"/></svg>
+      <span class="brand-name">LOPES</span>
+      <span class="brand-sub">VEÍCULOS</span>
+    </a>
+    <button class="icon-btn" type="button" id="menu-close" aria-label="Fechar menu"><span data-icon="close"></span></button>
+  </div>
+  <nav aria-label="Menu">
+    <a href="#inicio" data-nav="inicio">Início <span data-icon="arrowR"></span></a>
+    <a href="#estoque" data-nav="estoque">Estoque <span data-icon="arrowR"></span></a>
+    <a href="#vender" data-nav="vender">Vender meu carro <span data-icon="arrowR"></span></a>
+    <a href="#sobre" data-nav="sobre">Sobre <span data-icon="arrowR"></span></a>
+  </nav>
+  <div id="drawer-zap" style="display:grid;gap:10px"></div>
+</div>
+
+<main id="conteudo" tabindex="-1"></main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#inicio" aria-label="Lopes Veículos, página inicial">
+          <svg class="carline" viewBox="0 0 640 165" aria-hidden="true" focusable="false"><path class="cl-main" d="M13.0 127.6C15.0 126.8 17.0 126.1 19.0 125.5C26.2 122.6 44.2 114.0 56.0 109.8C67.8 105.6 78.3 102.8 90.0 100.2C101.7 97.5 110.3 96.4 126.0 94.0C141.7 91.6 167.8 87.6 184.0 86.0C200.2 84.4 213.5 85.0 223.0 84.3C232.5 83.6 236.3 82.9 241.0 81.9C245.7 80.9 247.7 79.9 251.0 78.3C254.3 76.7 257.7 74.6 261.0 72.2C264.3 69.7 265.8 68.6 271.0 63.7C276.2 58.7 286.7 47.4 292.0 42.4C297.3 37.4 299.5 35.9 303.0 33.4C306.5 31.0 309.2 29.5 313.0 27.7C316.8 26.0 321.5 24.4 326.0 23.1C330.5 21.7 332.7 21.0 340.0 19.7C347.3 18.5 362.3 16.5 370.0 15.6C377.7 14.8 379.2 14.9 386.0 14.6C392.8 14.3 402.7 13.7 411.0 13.7C419.3 13.7 427.2 13.8 436.0 14.6C444.8 15.3 456.5 16.8 464.0 18.2C471.5 19.5 475.7 21.1 481.0 22.8C486.3 24.6 491.5 26.7 496.0 28.7C500.5 30.8 498.2 28.7 508.0 35.2C517.8 41.7 545.0 61.0 555.0 67.8C565.0 74.5 563.2 73.2 568.0 75.6C572.8 77.9 577.0 79.8 584.0 81.8C591.0 83.7 604.3 85.4 610.0 87.3C615.7 89.2 615.8 90.8 618.0 93.3C620.2 95.8 621.9 98.9 623.0 102.0C624.1 105.1 624.2 109.0 624.5 112.0C624.8 115.0 624.5 118.7 624.5 120.0"/><path class="cl-win" d="M277.5 75.6C278.6 74.8 279.8 73.9 281.0 72.9C286.5 69.3 301.8 57.5 310.0 52.4C318.2 47.4 325.0 44.6 330.0 42.4C335.0 40.3 336.0 40.3 340.0 39.3C344.0 38.4 346.0 37.7 354.0 36.6C362.0 35.6 375.2 33.6 388.0 33.0C400.8 32.4 421.7 32.8 431.0 33.1C440.3 33.4 439.3 33.8 444.0 34.7C448.7 35.5 454.7 36.8 459.0 38.1C463.3 39.3 466.2 40.3 470.0 41.9C473.8 43.6 477.8 45.6 482.0 48.2C486.2 50.8 490.8 54.3 495.0 57.6C499.2 60.9 504.3 66.0 507.0 68.0"/><path class="cl-bot" d="M64.0 150.7C90.7 148.9 177.0 142.8 224.0 140.0C271.0 137.3 314.3 135.5 346.0 134.1C377.7 132.8 391.7 132.4 414.0 132.0C436.3 131.6 451.0 131.0 480.0 132.0C509.0 133.0 570.0 136.9 588.0 137.9"/></svg>
+          <span class="brand-name">LOPES</span>
+          <span class="brand-sub">VEÍCULOS</span>
+        </a>
+        <p>Seminovos selecionados, com atendimento direto pelo WhatsApp. À vista, financiado ou com seu usado na troca.</p>
+        <a class="btn btn-ghost btn-sm" id="ft-ig" href="#" target="_blank" rel="noopener"></a>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#estoque">Estoque</a></li>
+          <li><a href="#vender">Vender meu carro</a></li>
+          <li><a href="#sobre">Sobre e contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Vendas no WhatsApp</h4>
+        <ul id="ft-zap"></ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul id="ft-contato"></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="ano"></span> Lopes Veículos. Todos os direitos reservados.</span>
+      <span>Site por f*CK studios</span>
+    </div>
+  </div>
+</footer>
+
+<div class="fab" id="fab">
+  <div class="fab-panel" id="fab-panel" hidden></div>
+  <button class="fab-btn" type="button" id="fab-btn" aria-label="Falar no WhatsApp" aria-expanded="false" aria-controls="fab-panel"><span data-icon="zap"></span></button>
+</div>
+
+<dialog class="sheet" id="buy" aria-labelledby="buy-title"></dialog>
+<dialog class="lightbox" id="lightbox" aria-label="Fotos do carro"></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =====================================================================
+   LOPES VEÍCULOS
+   Para atualizar o site, edite só os dois blocos abaixo: LOJA e CARROS.
+   ===================================================================== */
+
+const LOJA = {
+  nome: "Lopes Veículos",
+  instagram: "lopesveiculos_",
+  email: "lopesveiculos001@gmail.com",
+  endereco: "",   // ex.: "Av. Exemplo, 1000 · Bairro · Cidade/SP"  (vazio = botão "Pedir localização")
+  mapa: "",       // link do Google Maps da loja (opcional)
+  horario: "",    // ex.: "Seg a sex, 8h às 18h · Sáb, 8h às 13h"
+  vendedores: [
+    { nome: "João",    tel: "15998219055" },
+    { nome: "Miguel",  tel: "15996716788" },
+    { nome: "Joseano", tel: "15997994770" },
+  ],
+};
+
+/* fotos: quantidade de arquivos img/<id>-1.jpg, <id>-2.jpg... (a 1ª é a capa; a 2ª aparece ao passar o mouse)
+   novo: true  -> aparece na Vitrine com o selo "Recém-chegado"
+   destaque: true -> carro do topo da página inicial
+   ATENÇÃO: preço, km, anos e itens são EXEMPLOS. Troque pelos dados reais antes de publicar. */
+const CARROS = [
+  {
+    id: "tcross", marca: "Volkswagen", modelo: "T-Cross", versao: "200 TSI",
+    anoFab: 2024, anoMod: 2025, km: 21000, preco: 132900,
+    cambio: "Automático", combustivel: "Flex", cor: "Branco", tipo: "SUV", portas: 4, placaFinal: "6",
+    fotos: 5, novo: true, destaque: true,
+    itens: ["Painel de instrumentos digital", "Central multimídia de tela flutuante", "Lanternas em LED com barra de luz", "Rodas de liga leve diamantadas", "Rack de teto", "Motor 1.0 turbo (TSI)"],
+    descricao: "SUV da linha nova, com a barra de luz na traseira e a central multimídia de tela flutuante. Motor 1.0 turbo econômico, câmbio automático e espaço de sobra para a família. Carro conservado e pronto para rodar.",
+  },
+  {
+    id: "nivus", marca: "Volkswagen", modelo: "Nivus", versao: "200 TSI",
+    anoFab: 2022, anoMod: 2023, km: 38500, preco: 109900,
+    cambio: "Automático", combustivel: "Flex", cor: "Cinza", tipo: "SUV Cupê", portas: 4, placaFinal: "5",
+    fotos: 5, novo: true,
+    itens: ["Painel de instrumentos digital", "Central multimídia VW Play", "Faróis com luz diurna em LED", "Rodas de liga leve", "Rack de teto", "Motor 1.0 turbo (TSI)"],
+    descricao: "SUV cupê de visual esportivo, na cor cinza que valoriza as linhas do carro. Motor 1.0 turbo com câmbio automático, painel digital e central multimídia. Ótimo para cidade e estrada.",
+  },
+  {
+    id: "hb20", marca: "Hyundai", modelo: "HB20", versao: "1.6",
+    anoFab: 2019, anoMod: 2019, km: 64000, preco: 69900,
+    cambio: "Automático", combustivel: "Flex", cor: "Branco", tipo: "Hatch", portas: 4, placaFinal: "9",
+    fotos: 4, novo: true,
+    itens: ["Câmbio automático", "Rodas de liga leve", "Ar-condicionado", "Vidros e travas elétricas", "Grade dianteira da linha 2019"],
+    descricao: "Hatch econômico e fácil de manter, com motor 1.6 e câmbio automático. Ideal para o dia a dia na cidade. Pintura branca conservada e interior bem cuidado.",
+  },
+  {
+    id: "veloster", marca: "Hyundai", modelo: "Veloster", versao: "1.6 16V",
+    anoFab: 2012, anoMod: 2012, km: 89000, preco: 54900,
+    cambio: "Automático", combustivel: "Gasolina", cor: "Preto", tipo: "Esportivo", portas: 3, placaFinal: "0",
+    fotos: 5, novo: true,
+    itens: ["Teto panorâmico", "Bancos em couro", "Câmbio automático", "Central multimídia", "Rodas de liga leve aro 18", "Pedaleiras esportivas"],
+    descricao: "O esportivo de 3 portas que chama atenção por onde passa: uma porta do lado do motorista e duas do lado do passageiro. Teto panorâmico, bancos em couro e câmbio automático.",
+  },
+];
+
+/* ===================================================================== */
+
+const PATH = {"main": "M13.0 127.6C15.0 126.8 17.0 126.1 19.0 125.5C26.2 122.6 44.2 114.0 56.0 109.8C67.8 105.6 78.3 102.8 90.0 100.2C101.7 97.5 110.3 96.4 126.0 94.0C141.7 91.6 167.8 87.6 184.0 86.0C200.2 84.4 213.5 85.0 223.0 84.3C232.5 83.6 236.3 82.9 241.0 81.9C245.7 80.9 247.7 79.9 251.0 78.3C254.3 76.7 257.7 74.6 261.0 72.2C264.3 69.7 265.8 68.6 271.0 63.7C276.2 58.7 286.7 47.4 292.0 42.4C297.3 37.4 299.5 35.9 303.0 33.4C306.5 31.0 309.2 29.5 313.0 27.7C316.8 26.0 321.5 24.4 326.0 23.1C330.5 21.7 332.7 21.0 340.0 19.7C347.3 18.5 362.3 16.5 370.0 15.6C377.7 14.8 379.2 14.9 386.0 14.6C392.8 14.3 402.7 13.7 411.0 13.7C419.3 13.7 427.2 13.8 436.0 14.6C444.8 15.3 456.5 16.8 464.0 18.2C471.5 19.5 475.7 21.1 481.0 22.8C486.3 24.6 491.5 26.7 496.0 28.7C500.5 30.8 498.2 28.7 508.0 35.2C517.8 41.7 545.0 61.0 555.0 67.8C565.0 74.5 563.2 73.2 568.0 75.6C572.8 77.9 577.0 79.8 584.0 81.8C591.0 83.7 604.3 85.4 610.0 87.3C615.7 89.2 615.8 90.8 618.0 93.3C620.2 95.8 621.9 98.9 623.0 102.0C624.1 105.1 624.2 109.0 624.5 112.0C624.8 115.0 624.5 118.7 624.5 120.0", "win": "M277.5 75.6C278.6 74.8 279.8 73.9 281.0 72.9C286.5 69.3 301.8 57.5 310.0 52.4C318.2 47.4 325.0 44.6 330.0 42.4C335.0 40.3 336.0 40.3 340.0 39.3C344.0 38.4 346.0 37.7 354.0 36.6C362.0 35.6 375.2 33.6 388.0 33.0C400.8 32.4 421.7 32.8 431.0 33.1C440.3 33.4 439.3 33.8 444.0 34.7C448.7 35.5 454.7 36.8 459.0 38.1C463.3 39.3 466.2 40.3 470.0 41.9C473.8 43.6 477.8 45.6 482.0 48.2C486.2 50.8 490.8 54.3 495.0 57.6C499.2 60.9 504.3 66.0 507.0 68.0", "bot": "M64.0 150.7C90.7 148.9 177.0 142.8 224.0 140.0C271.0 137.3 314.3 135.5 346.0 134.1C377.7 132.8 391.7 132.4 414.0 132.0C436.3 131.6 451.0 131.0 480.0 132.0C509.0 133.0 570.0 136.9 588.0 137.9"};
+const I = (() => {
+  const s = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${d}</svg>`;
+  return {
+    zap: `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.2a8.8 8.8 0 0 0-7.6 13.2L3.2 20.8l4.5-1.2A8.8 8.8 0 1 0 12 3.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.1 7.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.3l.7 1.7c.1.2 0 .5-.1.7l-.5.6c-.1.1-.2.3-.1.5.3.6.8 1.2 1.3 1.7.6.6 1.2 1 1.9 1.3.2.1.4 0 .5-.1l.6-.7c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.3.4.5v.5c0 .3-.1.7-.4.9-.5.4-1.2.7-1.9.6-1.4-.2-2.9-1-4.2-2.3S8.5 11.3 8.3 9.9c-.1-.8.3-1.6.8-2.1z" fill="currentColor"/></svg>`,
+    ig: s(`<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/>`),
+    mail: s(`<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>`),
+    pin: s(`<path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>`),
+    clock: s(`<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`),
+    copy: s(`<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/>`),
+    heart: s(`<path d="M12 20s-7.5-4.6-9-9.4C2 7.3 4.2 4.5 7.2 4.5c2 0 3.6 1.2 4.8 2.9 1.2-1.7 2.8-2.9 4.8-2.9 3 0 5.2 2.8 4.2 6.1-1.5 4.8-9 9.4-9 9.4z"/>`),
+    check: s(`<circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16.5 9.5"/>`),
+    shield: s(`<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.3 7.5 9.5 4.3-1.2 7.5-4.9 7.5-9.5V6L12 3z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/>`),
+    percent: s(`<circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/><path d="M18 6 6 18"/>`),
+    swap: s(`<path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/>`),
+    chat: s(`<path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 10h8M8 13h5"/>`),
+    cash: s(`<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v5M18 9.5v5"/>`),
+    arrowR: s(`<path d="M5 12h14M13 6l6 6-6 6"/>`),
+    arrowL: s(`<path d="M19 12H5M11 6l-6 6 6 6"/>`),
+    menu: s(`<path d="M4 7h16M4 12h16M4 17h10"/>`),
+    close: s(`<path d="M6 6l12 12M18 6 6 18"/>`),
+    search: s(`<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/>`),
+    filter: s(`<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>`),
+    calendar: s(`<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>`),
+    gauge: s(`<path d="M4.5 17a8.5 8.5 0 1 1 15 0"/><path d="m12 13 4-4"/><circle cx="12" cy="13" r="1.3"/>`),
+    gear: s(`<circle cx="6" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="18" cy="5" r="1.6"/><circle cx="6" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><path d="M6 6.6v10.8M12 6.6v10.8M18 6.6V12H6"/>`),
+    fuel: s(`<path d="M5 20V5a1.5 1.5 0 0 1 1.5-1.5h6A1.5 1.5 0 0 1 14 5v15M3.5 20h12M5 10h9"/><path d="M14 8h1.5A1.5 1.5 0 0 1 17 9.5V16a1.5 1.5 0 0 0 3 0V8.5L17.5 6"/>`),
+    drop: s(`<path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5z"/>`),
+    car: s(`<path d="M3 16v-3.5L5.2 7.4A2 2 0 0 1 7 6.2h10a2 2 0 0 1 1.8 1.2L21 12.5V16a1 1 0 0 1-1 1h-1M5 17H4a1 1 0 0 1-1-1M3.5 12.5h17M9.5 17h5"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/>`),
+    door: s(`<path d="M5 20V9l6-5h8v16H5z"/><path d="M5 11h14M15 14h2"/>`),
+    plate: s(`<rect x="2.5" y="7" width="19" height="10" rx="1.5"/><path d="M2.5 9.8h19"/>`),
+    camera: s(`<path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>`),
+    expand: s(`<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>`),
+  };
+})();
+
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const esc = (v) => String(v).replace(/[&<>"']/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
+const range = (n) => Array.from({ length: n }, (_, i) => i + 1);
+const uniq = (a) => [...new Set(a)];
+const norm = (s) => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+const milhar = (n) => Math.round(n).toLocaleString("pt-BR");
+const brl = (n) => "R$ " + milhar(n);
+const priceHTML = (n) => `<span class="price"><small>R$</small>${milhar(n)}</span>`;
+const kmTxt = (n) => milhar(n) + " km";
+const anoTxt = (c) => `${c.anoFab}/${c.anoMod}`;
+const telTxt = (t) => `(${t.slice(0, 2)}) ${t.slice(2, 7)}-${t.slice(7)}`;
+const wa = (tel, msg) => `https://wa.me/55${tel}` + (msg ? `?text=${encodeURIComponent(msg)}` : "");
+const IG_URL = `https://www.instagram.com/${LOJA.instagram}/`;
+const foto = (c, i = 1, sm = false) => `img/${c.id}-${i}${sm ? "-sm" : ""}.jpg`;
+const nomeCarro = (c) => `${c.marca} ${c.modelo} ${c.versao}`;
+const byId = (id) => CARROS.find((c) => c.id === id);
+const plate = (f) => `<span class="plate" title="Final da placa ${esc(f)}"><i>BRASIL</i><b>FINAL ${esc(f)}</b></span>`;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const carLine = (cls = "") => `<svg class="carline ${cls}" viewBox="0 0 640 165" aria-hidden="true" focusable="false"><path class="cl-main" pathLength="1" d="${PATH.main}"/><path class="cl-win" pathLength="1" d="${PATH.win}"/><path class="cl-bot" pathLength="1" d="${PATH.bot}"/></svg>`;
+// "Quem estiver livre" distribui os contatos entre os vendedores
+const VEZ = Math.floor(Math.random() * LOJA.vendedores.length);
+const daVez = () => LOJA.vendedores[VEZ];
+
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+};
+let favs = new Set(store.get("lopes-favoritos", []));
+let cleanups = [];
+const main = $("#conteudo");
+
+function toast(msg) {
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+function selectNear(btn) {
+  const s = btn.closest(".tel,.c-row,.c-card")?.querySelector("span");
+  if (!s) return;
+  const r = document.createRange();
+  r.selectNodeContents(s);
+  const sel = getSelection();
+  sel.removeAllRanges();
+  sel.addRange(r);
+}
+function copyText(txt, btn) {
+  const fail = () => { selectNear(btn); toast("Texto selecionado. É só copiar."); };
+  try { navigator.clipboard.writeText(txt).then(() => toast("Copiado: " + txt), fail); } catch (e) { fail(); }
+}
+
+/* ---------- componentes ---------- */
+function card(c) {
+  const fav = favs.has(c.id);
+  return `<article class="card">
+    <a class="card-media" href="#carro-${c.id}" tabindex="-1" aria-hidden="true">
+      <img src="${foto(c, 1, true)}" alt="" loading="lazy" decoding="async">
+      ${c.fotos > 1 ? `<img class="alt" src="${foto(c, 2, true)}" alt="" loading="lazy" decoding="async">` : ""}
+      ${c.novo ? `<span class="badge">Recém-chegado</span>` : ""}
+    </a>
+    <button class="fav" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="Favoritar ${esc(c.modelo)}">${I.heart}</button>
+    <div class="card-body">
+      <p class="card-brand">${esc(c.marca)}</p>
+      <h3 class="card-title"><a href="#carro-${c.id}">${esc(c.modelo)}</a></h3>
+      <p class="card-ver">${esc(c.versao)} · ${esc(c.cambio)}</p>
+      <ul class="card-specs"><li>${anoTxt(c)}</li><li>${kmTxt(c.km)}</li><li>${esc(c.combustivel)}</li></ul>
+      <div class="card-foot">${priceHTML(c.preco)}<button class="btn btn-red btn-sm" type="button" data-buy="${c.id}">Comprar</button></div>
+    </div>
+  </article>`;
+}
+
+function personCard(v) {
+  return `<div class="person">
+    <div class="person-top"><span class="avatar" aria-hidden="true">${esc(v.nome[0])}</span><div><h3>${esc(v.nome)}</h3><p class="person-role">Consultor de vendas</p></div></div>
+    <div class="tel"><span>${telTxt(v.tel)}</span><button class="copy" type="button" data-copy="${telTxt(v.tel)}" aria-label="Copiar número de ${esc(v.nome)}">${I.copy}</button></div>
+    <a class="btn btn-zap btn-sm" href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos.`)}" target="_blank" rel="noopener">${I.zap} Chamar ${esc(v.nome)}</a>
+  </div>`;
+}
+
+const chipsVend = (p) => [
+  `<label class="chip"><input type="radio" name="${p}-vend" id="${p}-vend-x" value="-1" checked><span>Quem estiver livre</span></label>`,
+  ...LOJA.vendedores.map((v, i) => `<label class="chip"><input type="radio" name="${p}-vend" id="${p}-vend-${i}" value="${i}"><span>${esc(v.nome)}</span></label>`),
+].join("");
+const pickVend = (p) => { const v = +($(`input[name="${p}-vend"]:checked`)?.value ?? -1); return v >= 0 ? LOJA.vendedores[v] : daVez(); };
+const opt = (name, value, title, icon, sub, checked) => `<label class="opt"><input type="radio" name="${name}" id="${name}-${value}" value="${value}" ${checked ? "checked" : ""}><span>${icon}<b>${title}</b><small>${sub}</small></span></label>`;
+
+/* ---------- INÍCIO ---------- */
+function viewHome() {
+  const d = CARROS.find((c) => c.destaque) || CARROS[0];
+  const tipos = uniq(CARROS.map((c) => c.tipo));
+  const marcas = uniq(CARROS.map((c) => c.marca));
+  const minP = Math.min(...CARROS.map((c) => c.preco));
+  const faixas = [60000, 80000, 100000, 120000, 150000, 200000].filter((v) => v >= minP);
+  const novos = CARROS.filter((c) => c.novo);
+  const mosaic = [["nivus", 1], ["tcross", 2], ["veloster", 1], ["hb20", 1], ["tcross", 1], ["veloster", 2]]
+    .map(([id, i]) => byId(id) ? `<a href="${IG_URL}" target="_blank" rel="noopener" aria-label="Ver no Instagram"><img src="${foto(byId(id), i, true)}" alt="" loading="lazy"></a>` : "").join("");
+
+  return `
+  <section class="hero" aria-labelledby="hero-t">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        ${carLine("hero-line draw")}
+        <h1 class="hero-title" id="hero-t">Seu próximo carro está aqui</h1>
+        <p class="hero-rule">Seminovos com procedência</p>
+        <p class="hero-lead">Escolha no estoque e feche do seu jeito: à vista, financiado ou com o seu usado na troca. Tudo direto com um consultor pelo WhatsApp.</p>
+        <form class="quick" id="quick" aria-label="Busca rápida">
+          <label for="q-tipo">Carroceria<select id="q-tipo"><option value="">Todas</option>${tipos.map((t) => `<option>${esc(t)}</option>`).join("")}</select></label>
+          <label for="q-marca">Marca<select id="q-marca"><option value="">Todas</option>${marcas.map((t) => `<option>${esc(t)}</option>`).join("")}</select></label>
+          <label for="q-preco">Preço até<select id="q-preco"><option value="">Qualquer valor</option>${faixas.map((v) => `<option value="${v}">${brl(v)}</option>`).join("")}</select></label>
+          <button class="btn btn-red" type="submit">${I.search} Buscar</button>
+        </form>
+        <ul class="hero-proof">
+          <li><span><b>${CARROS.length}</b> carros disponíveis</span></li>
+          <li><span><b>${LOJA.vendedores.length}</b> consultores no WhatsApp</span></li>
+          <li><span>Financiamento e troca</span></li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <a class="hero-photo" href="#carro-${d.id}" aria-label="Ver ${esc(nomeCarro(d))}"><img src="${foto(d, 1)}" alt="${esc(nomeCarro(d))} ${anoTxt(d)}" fetchpriority="high"></a>
+        <a class="hero-tag" href="#carro-${d.id}">
+          <span class="eyebrow">Destaque da loja</span>
+          <strong>${esc(d.marca)} ${esc(d.modelo)}</strong>
+          <span class="meta">${esc(d.versao)} · ${anoTxt(d)} · ${kmTxt(d.km)}</span>
+          ${priceHTML(d.preco)}
+        </a>
+        <span class="taillight" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  ${novos.length ? `
+  <section class="band band-graphite" aria-labelledby="vit-t">
+    <div class="wrap showroom-wrap ${reduced ? "" : "auto"}" id="showroom">
+      <div class="sec-head">
+        <div><p class="eyebrow">Vitrine</p><h2 class="h2" id="vit-t">Recém-chegados na loja</h2></div>
+        <a class="link-arrow" href="#estoque">Ver estoque completo ${I.arrowR}</a>
+      </div>
+      <div class="showroom">
+        <div class="sr-stage">
+          <a class="sr-frame" id="sr-frame" href="#carro-${novos[0].id}"><span class="tagline badge">Recém-chegado</span><img id="sr-img" src="${foto(novos[0], 1)}" alt=""></a>
+          <div class="thumbs" id="sr-thumbs" aria-label="Fotos do carro"></div>
+        </div>
+        <div class="sr-info" id="sr-info" aria-live="polite"></div>
+      </div>
+      <div class="sr-tabs" role="tablist" aria-label="Escolha o carro da vitrine">
+        ${novos.map((c, k) => `<button class="sr-tab" type="button" role="tab" id="sr-tab-${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><img src="${foto(c, 1, true)}" alt=""><span><b>${esc(c.modelo)}</b><small>${anoTxt(c)} · ${brl(c.preco)}</small></span><i class="prog" aria-hidden="true"></i></button>`).join("")}
+      </div>
+    </div>
+  </section>` : ""}
+
+  <section class="band" aria-labelledby="car-t">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Estoque</p><h2 class="h2" id="car-t">Todos os carros da loja</h2><p class="lead">Arraste para o lado ou use as setas. Toque no carro para ver as fotos, o preço e os detalhes.</p></div>
+      </div>
+      <div class="carousel" id="carousel">
+        <div class="car-track" id="car-track" tabindex="0" aria-label="Carros disponíveis">${CARROS.map(card).join("")}</div>
+        <div class="car-ctrl">
+          <button class="icon-btn" type="button" data-dir="-1" aria-label="Carro anterior">${I.arrowL}</button>
+          <button class="icon-btn" type="button" data-dir="1" aria-label="Próximo carro">${I.arrowR}</button>
+          <div class="car-bar" aria-hidden="true"><i id="car-bar"></i></div>
+          <a class="link-arrow" href="#estoque">Ver todos ${I.arrowR}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band zap-band" aria-labelledby="zap-t">
+    <div class="wrap zap-grid">
+      <div class="zap-copy">
+        <p class="eyebrow">Chama aqui</p>
+        <h2 id="zap-t">Fale direto com quem vende</h2>
+        <p class="lead">Escolha um consultor e chame no WhatsApp. Pergunte sobre o carro, peça mais fotos, faça sua proposta ou mande o seu usado para avaliação.</p>
+      </div>
+      <div class="people">${LOJA.vendedores.map(personCard).join("")}</div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="inf-t">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Por que a Lopes</p><h2 class="h2" id="inf-t">Comprar carro sem dor de cabeça</h2></div></div>
+      <div class="benefits">
+        <div class="benefit">${I.shield}<h3>Procedência conferida</h3><p>Documentação e histórico verificados antes de o carro entrar na vitrine.</p></div>
+        <div class="benefit">${I.percent}<h3>Financiamento facilitado</h3><p>Você diz a entrada e as parcelas que cabem no bolso. A gente simula e te responde.</p></div>
+        <div class="benefit">${I.swap}<h3>Seu usado na troca</h3><p>Avaliamos o seu carro e usamos o valor como parte do pagamento.</p></div>
+        <div class="benefit">${I.chat}<h3>Atendimento direto</h3><p>Sem robô e sem enrolação: você conversa com o consultor que vai te atender na loja.</p></div>
+      </div>
+
+      <div class="sec-head" style="margin-top:88px"><div><p class="eyebrow">Como comprar</p><h2 class="h2">Do clique à chave na mão</h2></div></div>
+      <ol class="steps">
+        <li class="step"><h3>Escolha o carro</h3><p>Veja fotos, quilometragem e preço no estoque. Use os filtros para achar o carro certo.</p></li>
+        <li class="step"><h3>Clique em Comprar</h3><p>Diga se vai pagar à vista, financiar ou dar seu carro na troca.</p></li>
+        <li class="step"><h3>Receba a proposta</h3><p>Sua mensagem chega pronta no WhatsApp do consultor, que responde com as condições.</p></li>
+        <li class="step"><h3>Venha buscar</h3><p>Combine a visita, faça o test drive e saia com o carro.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="sell">
+        ${carLine()}
+        <div>
+          <p class="eyebrow">Venda ou troca</p>
+          <h2>Quer vender ou trocar o seu carro?</h2>
+          <p class="muted">Mande os dados do seu carro em um minuto e receba uma proposta pelo WhatsApp. Ele também pode entrar como parte do pagamento de um carro da loja.</p>
+        </div>
+        <a class="btn btn-red" href="#vender">Avaliar meu carro ${I.arrowR}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-graphite" aria-labelledby="ig-t">
+    <div class="wrap ig">
+      <div class="ig-copy">
+        <p class="eyebrow">Instagram</p>
+        <h2 class="ig-handle" id="ig-t">@${esc(LOJA.instagram)}</h2>
+        <p class="lead">Chegadas da semana, vídeos dos carros e condições especiais aparecem primeiro no nosso Instagram.</p>
+        <div><a class="btn btn-red" href="${IG_URL}" target="_blank" rel="noopener">${I.ig} Seguir no Instagram</a></div>
+      </div>
+      <div class="ig-mosaic">${mosaic}</div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="faq-t">
+    <div class="wrap faq">
+      <div style="display:grid;gap:14px;align-content:start">
+        <p class="eyebrow">Dúvidas</p>
+        <h2 class="h2" id="faq-t">Perguntas frequentes</h2>
+        <p class="muted">Não achou sua resposta? Chame um consultor no WhatsApp.</p>
+        <div><button class="btn btn-ghost btn-sm" type="button" data-fab-open>${I.zap} Falar com consultor</button></div>
+      </div>
+      <div class="faq-list">
+        <details><summary>Vocês fazem financiamento?</summary><p>Sim. Na hora de comprar, informe o valor de entrada e em quantas parcelas quer pagar. O consultor faz a simulação e te responde pelo WhatsApp com as condições.</p></details>
+        <details><summary>Aceitam meu carro na troca?</summary><p>Aceitamos. Envie os dados e as fotos do seu carro pela página Vender meu carro. O valor da avaliação pode entrar como parte do pagamento.</p></details>
+        <details><summary>Tem desconto para pagamento à vista?</summary><p>Pagamento à vista tem condição especial. Clique em Comprar, escolha À vista e consulte o desconto com o consultor.</p></details>
+        <details><summary>Posso ver o carro pessoalmente?</summary><p>Pode e deve. Combine o melhor horário com um consultor para ver o carro de perto e fazer o test drive.</p></details>
+        <details><summary>O carro do site ainda está disponível?</summary><p>O estoque muda rápido. Antes de ir até a loja, confirme a disponibilidade e o valor com um consultor pelo WhatsApp.</p></details>
+      </div>
+    </div>
+  </section>`;
+}
+
+function srInfo(c) {
+  return `<p class="sr-brand">${esc(c.marca)}</p>
+    <h3 class="sr-title">${esc(c.modelo)}</h3>
+    <p class="sr-ver">${esc(c.versao)} · ${esc(c.cor)}</p>
+    <dl class="spec-row">
+      <div><dt>Ano</dt><dd>${anoTxt(c)}</dd></div>
+      <div><dt>Km</dt><dd>${milhar(c.km)}</dd></div>
+      <div><dt>Câmbio</dt><dd>${esc(c.cambio)}</dd></div>
+      <div><dt>Placa</dt><dd>${plate(c.placaFinal)}</dd></div>
+    </dl>
+    <div class="sr-price">${priceHTML(c.preco)}<span>à vista, financiado ou com troca</span></div>
+    <div class="sr-actions">
+      <button class="btn btn-red" type="button" data-buy="${c.id}">Quero comprar</button>
+      <a class="btn btn-ghost" href="#carro-${c.id}">Ver detalhes</a>
+    </div>`;
+}
+
+function bindHome() {
+  $("#quick")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    resetF();
+    const t = $("#q-tipo").value, m = $("#q-marca").value, p = $("#q-preco").value;
+    if (t) F.tipos.add(t);
+    if (m) F.marcas.add(m);
+    if (p) F.precoMax = +p;
+    location.hash = "estoque";
+  });
+  bindShowroom();
+  bindCarousel();
+}
+
+function bindShowroom() {
+  const root = $("#showroom");
+  if (!root) return;
+  const list = CARROS.filter((c) => c.novo);
+  const img = $("#sr-img"), frame = $("#sr-frame"), thumbs = $("#sr-thumbs"), info = $("#sr-info");
+  const tabs = $$(".sr-tab", root);
+  let cur = 0, foto_i = 1;
+
+  const swap = (src) => {
+    if (reduced) { img.src = src; return; }
+    img.classList.add("is-out");
+    setTimeout(() => {
+      img.onload = () => img.classList.remove("is-out");
+      img.src = src;
+      if (img.complete) img.classList.remove("is-out");
+    }, 200);
+  };
+  const markThumbs = () => $$(".thumb", thumbs).forEach((t) => t.setAttribute("aria-current", String(+t.dataset.sr === foto_i)));
+  const show = (i, first) => {
+    cur = i; foto_i = 1;
+    const c = list[i];
+    first ? (img.src = foto(c, 1)) : swap(foto(c, 1));
+    img.alt = `${nomeCarro(c)} ${anoTxt(c)}`;
+    frame.href = `#carro-${c.id}`;
+    thumbs.innerHTML = range(c.fotos).map((k) => `<button class="thumb" type="button" data-sr="${k}" aria-label="Foto ${k} de ${c.fotos}" aria-current="${k === 1}"><img src="${foto(c, k, true)}" alt="" loading="lazy"></button>`).join("");
+    info.innerHTML = srInfo(c);
+    tabs.forEach((t, k) => {
+      t.setAttribute("aria-selected", String(k === i));
+      t.tabIndex = k === i ? 0 : -1;
+      const p = t.querySelector(".prog");
+      p.style.animation = "none"; void p.offsetWidth; p.style.animation = "";
+    });
+  };
+  const stopAuto = () => root.classList.remove("auto");
+
+  tabs.forEach((t, k) => t.addEventListener("click", () => { stopAuto(); show(k); }));
+  $(".sr-tabs", root).addEventListener("keydown", (e) => {
+    if (!["ArrowRight", "ArrowLeft"].includes(e.key)) return;
+    e.preventDefault();
+    const n = (cur + (e.key === "ArrowRight" ? 1 : -1) + list.length) % list.length;
+    stopAuto(); show(n); tabs[n].focus();
+  });
+  thumbs.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-sr]");
+    if (!b) return;
+    stopAuto();
+    foto_i = +b.dataset.sr;
+    swap(foto(list[cur], foto_i));
+    markThumbs();
+  });
+  root.addEventListener("animationend", (e) => {
+    if (e.animationName === "prog" && root.classList.contains("auto")) show((cur + 1) % list.length);
+  });
+  show(0, true);
+}
+
+function bindCarousel() {
+  const track = $("#car-track");
+  if (!track) return;
+  const ctrl = $(".car-ctrl", track.parentElement);
+  const bar = $("#car-bar");
+  const btns = $$("[data-dir]", ctrl);
+  let timer = null, user = false;
+  const gap = () => parseFloat(getComputedStyle(track).columnGap) || 20;
+  const step = () => (track.firstElementChild?.getBoundingClientRect().width || track.clientWidth) + gap();
+  const upd = () => {
+    const max = track.scrollWidth - track.clientWidth;
+    const vis = Math.min(1, track.clientWidth / track.scrollWidth);
+    bar.style.width = vis * 100 + "%";
+    bar.style.transform = `translateX(${max > 0 ? (track.scrollLeft / max) * (1 / vis - 1) * 100 : 0}%)`;
+    btns.forEach((b) => (b.disabled = max <= 2));
+    btns.forEach((b) => (b.style.opacity = max <= 2 ? ".35" : ""));
+  };
+  const go = (d) => {
+    const max = track.scrollWidth - track.clientWidth;
+    if (d > 0 && track.scrollLeft >= max - 4) track.scrollTo({ left: 0 });
+    else if (d < 0 && track.scrollLeft <= 4) track.scrollTo({ left: max });
+    else track.scrollBy({ left: d * step() });
+  };
+  const stop = () => { clearInterval(timer); timer = null; };
+  const start = () => { if (reduced || user) return; stop(); timer = setInterval(() => go(1), 4500); };
+  const userStop = () => { user = true; stop(); };
+  btns.forEach((b) => b.addEventListener("click", () => { userStop(); go(+b.dataset.dir); }));
+  track.addEventListener("pointerdown", userStop);
+  track.addEventListener("touchstart", userStop, { passive: true });
+  track.addEventListener("mouseenter", stop);
+  track.addEventListener("mouseleave", start);
+  track.addEventListener("focusin", stop);
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); userStop(); go(e.key === "ArrowRight" ? 1 : -1); }
+  });
+  track.addEventListener("scroll", upd, { passive: true });
+  addEventListener("resize", upd);
+  cleanups.push(() => { stop(); removeEventListener("resize", upd); });
+  upd();
+  start();
+}
+
+/* ---------- ESTOQUE ---------- */
+const F = { q: "", marcas: new Set(), tipos: new Set(), cambios: new Set(), precoMax: null, anoMin: 0, kmMax: 0, favs: false, ordem: "recentes" };
+function resetF() {
+  Object.assign(F, { q: "", precoMax: null, anoMin: 0, kmMax: 0, favs: false, ordem: "recentes" });
+  F.marcas.clear(); F.tipos.clear(); F.cambios.clear();
+}
+const precoLim = () => {
+  const p = CARROS.map((c) => c.preco);
+  return [Math.floor(Math.min(...p) / 5000) * 5000, Math.ceil(Math.max(...p) / 5000) * 5000];
+};
+const activeCount = () => {
+  const [, pMax] = precoLim();
+  return F.marcas.size + F.tipos.size + F.cambios.size + (F.q ? 1 : 0) + (F.precoMax != null && F.precoMax < pMax ? 1 : 0) + (F.anoMin ? 1 : 0) + (F.kmMax ? 1 : 0) + (F.favs ? 1 : 0);
+};
+function filtrar() {
+  const q = norm(F.q);
+  const r = CARROS.filter((c) =>
+    (!q || norm(`${c.marca} ${c.modelo} ${c.versao} ${c.cor} ${c.tipo} ${c.anoMod}`).includes(q)) &&
+    (!F.marcas.size || F.marcas.has(c.marca)) &&
+    (!F.tipos.size || F.tipos.has(c.tipo)) &&
+    (!F.cambios.size || F.cambios.has(c.cambio)) &&
+    (F.precoMax == null || c.preco <= F.precoMax) &&
+    (!F.anoMin || c.anoMod >= F.anoMin) &&
+    (!F.kmMax || c.km <= F.kmMax) &&
+    (!F.favs || favs.has(c.id))
+  );
+  const o = F.ordem;
+  if (o === "menor") r.sort((a, b) => a.preco - b.preco);
+  else if (o === "maior") r.sort((a, b) => b.preco - a.preco);
+  else if (o === "novo") r.sort((a, b) => b.anoMod - a.anoMod || a.km - b.km);
+  else if (o === "km") r.sort((a, b) => a.km - b.km);
+  return r;
+}
+
+function chipGroup(label, key, setName) {
+  const vals = uniq(CARROS.map((c) => c[key]));
+  return `<div class="f-group"><p class="f-label">${label}</p><div class="chips">${vals.map((v, i) =>
+    `<label class="chip"><input type="checkbox" id="f-${key}-${i}" data-set="${setName}" value="${esc(v)}" ${F[setName].has(v) ? "checked" : ""}><span>${esc(v)} <em>${CARROS.filter((c) => c[key] === v).length}</em></span></label>`
+  ).join("")}</div></div>`;
+}
+
+function viewEstoque() {
+  const [pMin, pMax] = precoLim();
+  const pVal = Math.max(pMin, Math.min(pMax, F.precoMax ?? pMax));
+  const anos = uniq(CARROS.map((c) => c.anoMod)).sort((a, b) => b - a);
+  const kms = [20000, 40000, 60000, 80000, 100000];
+  return `
+  <section class="page-head">
+    ${carLine()}
+    <div class="wrap">
+      <p class="eyebrow">Estoque</p>
+      <h1>Encontre seu carro</h1>
+      <p class="lead">Filtre por marca, carroceria, preço e quilometragem. Achou? Clique em Comprar e escolha à vista, financiamento ou troca.</p>
+    </div>
+  </section>
+  <section class="band" style="padding-top:44px">
+    <div class="wrap cat">
+      <aside class="filters" id="filters" aria-label="Filtros">
+        <div class="f-head"><h2>Filtros</h2><button class="x" type="button" id="f-close" aria-label="Fechar filtros">${I.close}</button></div>
+        <div class="f-group">
+          <label class="f-label" for="f-q">Buscar</label>
+          <div class="search">${I.search}<input class="field" id="f-q" type="search" placeholder="Modelo, marca, cor..." value="${esc(F.q)}" autocomplete="off"></div>
+        </div>
+        ${chipGroup("Marca", "marca", "marcas")}
+        ${chipGroup("Carroceria", "tipo", "tipos")}
+        ${chipGroup("Câmbio", "cambio", "cambios")}
+        <div class="f-group">
+          <label class="f-label" for="f-preco">Preço até <output id="f-preco-out">${brl(pVal)}</output></label>
+          <input type="range" id="f-preco" min="${pMin}" max="${pMax}" step="1000" value="${pVal}">
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="f-ano">Ano</label>
+          <select class="field" id="f-ano"><option value="0">Qualquer ano</option>${anos.map((a) => `<option value="${a}" ${F.anoMin === a ? "selected" : ""}>${a} ou mais novo</option>`).join("")}</select>
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="f-km">Quilometragem</label>
+          <select class="field" id="f-km"><option value="0">Qualquer km</option>${kms.map((k) => `<option value="${k}" ${F.kmMax === k ? "selected" : ""}>Até ${milhar(k)} km</option>`).join("")}</select>
+        </div>
+        <div class="f-group">
+          <p class="f-label">Favoritos</p>
+          <div class="chips"><label class="chip"><input type="checkbox" id="f-favs" ${F.favs ? "checked" : ""}><span>Só os que salvei <em id="f-favs-n">${favs.size}</em></span></label></div>
+        </div>
+        <div class="f-foot">
+          <button class="btn btn-red only-m" type="button" id="f-see">Ver carros</button>
+          <button class="btn btn-ghost btn-sm" type="button" data-clear>Limpar filtros</button>
+        </div>
+      </aside>
+      <div class="results">
+        <div class="toolbar">
+          <button class="btn btn-ghost btn-sm only-m" type="button" id="f-open" aria-controls="filters">${I.filter} Filtros <span id="f-count"></span></button>
+          <p id="r-count" aria-live="polite"></p>
+          <label class="sort" for="f-ordem">Ordenar
+            <select class="field" id="f-ordem">
+              <option value="recentes" ${F.ordem === "recentes" ? "selected" : ""}>Mais recentes</option>
+              <option value="menor" ${F.ordem === "menor" ? "selected" : ""}>Menor preço</option>
+              <option value="maior" ${F.ordem === "maior" ? "selected" : ""}>Maior preço</option>
+              <option value="novo" ${F.ordem === "novo" ? "selected" : ""}>Ano mais novo</option>
+              <option value="km" ${F.ordem === "km" ? "selected" : ""}>Menor km</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </div>
+  </section>`;
+}
+
+function emptyState() {
+  const v = daVez();
+  const msg = `Olá, ${v.nome}! Vim pelo site da Lopes Veículos. Não achei no estoque o carro que procuro. Vocês conseguem encontrar para mim?\n\nProcuro: `;
+  return `<div class="empty" style="grid-column:1/-1">
+    <h3>Nenhum carro com esses filtros</h3>
+    <p>Tente tirar algum filtro. Se não encontrar o que procura, conte para a gente qual carro você quer que buscamos para você.</p>
+    <div><button class="btn btn-ghost btn-sm" type="button" data-clear>Limpar filtros</button><a class="btn btn-zap btn-sm" href="${wa(v.tel, msg)}" target="_blank" rel="noopener">${I.zap} Encomendar meu carro</a></div>
+  </div>`;
+}
+
+function bindEstoque() {
+  const grid = $("#grid"), filters = $("#filters");
+  const renderResults = () => {
+    const r = filtrar();
+    $("#r-count").innerHTML = `<b>${r.length}</b> ${r.length === 1 ? "carro encontrado" : "carros encontrados"}`;
+    grid.innerHTML = r.length ? r.map(card).join("") : emptyState();
+    const n = activeCount();
+    $("#f-count").textContent = n ? `(${n})` : "";
+    $("#f-see").textContent = r.length === 1 ? "Ver 1 carro" : `Ver ${r.length} carros`;
+  };
+  filters.addEventListener("input", (e) => {
+    const t = e.target;
+    if (t.dataset.set) { const s = F[t.dataset.set]; t.checked ? s.add(t.value) : s.delete(t.value); }
+    else if (t.id === "f-q") F.q = t.value;
+    else if (t.id === "f-preco") { F.precoMax = +t.value; $("#f-preco-out").textContent = brl(F.precoMax); }
+    else if (t.id === "f-ano") F.anoMin = +t.value;
+    else if (t.id === "f-km") F.kmMax = +t.value;
+    else if (t.id === "f-favs") F.favs = t.checked;
+    renderResults();
+  });
+  $("#f-ordem").addEventListener("change", (e) => { F.ordem = e.target.value; renderResults(); });
+  const open = () => { filters.classList.add("open"); document.body.style.overflow = "hidden"; $("#f-close").focus(); };
+  const close = () => { filters.classList.remove("open"); document.body.style.overflow = ""; };
+  $("#f-open").addEventListener("click", open);
+  $("#f-close").addEventListener("click", close);
+  $("#f-see").addEventListener("click", () => { close(); $("#f-open").focus(); });
+  main.addEventListener("click", onClear);
+  cleanups.push(() => { main.removeEventListener("click", onClear); document.body.style.overflow = ""; });
+  function onClear(e) {
+    if (!e.target.closest("[data-clear]")) return;
+    resetF();
+    main.innerHTML = viewEstoque();
+    cleanups.forEach((f) => f()); cleanups = [];
+    bindEstoque();
+    toast("Filtros limpos");
+  }
+  renderResults();
+  bindEstoque.refresh = renderResults;
+}
+
+/* ---------- PÁGINA DO CARRO ---------- */
+function viewCarro(c) {
+  const outros = CARROS.filter((x) => x.id !== c.id).slice(0, 3);
+  const specs = [
+    ["calendar", "Ano", anoTxt(c)], ["gauge", "Quilometragem", kmTxt(c.km)], ["gear", "Câmbio", esc(c.cambio)], ["fuel", "Combustível", esc(c.combustivel)],
+    ["drop", "Cor", esc(c.cor)], ["car", "Carroceria", esc(c.tipo)], ["door", "Portas", c.portas], ["plate", "Final da placa", plate(c.placaFinal)],
+  ];
+  const v = daVez();
+  return `
+  <section class="band" style="padding-top:36px">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Você está em"><a href="#inicio">Início</a><span aria-hidden="true">/</span><a href="#estoque">Estoque</a><span aria-hidden="true">/</span><span aria-current="page">${esc(c.marca)} ${esc(c.modelo)}</span></nav>
+      <div class="car-grid">
+        <div class="gallery">
+          <div style="position:relative">
+            <button class="g-main" type="button" aria-label="Ampliar fotos"><img id="g-img" src="${foto(c, 1)}" alt="${esc(nomeCarro(c))}, foto 1"><span class="badge badge-dark">${I.expand}<span id="g-count">1/${c.fotos}</span></span></button>
+            <button class="g-nav g-prev" type="button" data-gn="-1" aria-label="Foto anterior">${I.arrowL}</button>
+            <button class="g-nav g-next" type="button" data-gn="1" aria-label="Próxima foto">${I.arrowR}</button>
+          </div>
+          <div class="thumbs">${range(c.fotos).map((k) => `<button class="thumb" type="button" data-g="${k}" aria-label="Foto ${k} de ${c.fotos}" aria-current="${k === 1}"><img src="${foto(c, k, true)}" alt="" loading="lazy"></button>`).join("")}</div>
+        </div>
+        <div class="car-info">
+          <div style="display:grid;gap:12px">
+            <p class="eyebrow">${esc(c.marca)}${c.novo ? " · Recém-chegado" : ""}</p>
+            <h1 class="car-title">${esc(c.modelo)}</h1>
+            <p class="car-ver" style="margin-top:0">${esc(c.versao)}</p>
+          </div>
+          <div class="car-price"><span class="lbl">Preço</span>${priceHTML(c.preco)}<span class="note">À vista com desconto, financiado ou com seu carro na troca.</span></div>
+          <div class="car-actions">
+            <button class="btn btn-red" type="button" data-buy="${c.id}">Comprar este carro</button>
+            <button class="btn btn-ghost" type="button" data-buy="${c.id}" data-pag="financiamento">${I.percent} Financiar</button>
+            <button class="btn btn-ghost fav-inline" type="button" data-fav="${c.id}" aria-pressed="${favs.has(c.id)}" aria-label="Favoritar ${esc(c.modelo)}">${I.heart} Salvar</button>
+          </div>
+          <dl class="specs">${specs.map(([ic, k, val]) => `<div><dt>${I[ic]}${k}</dt><dd>${val}</dd></div>`).join("")}</dl>
+          <a class="btn btn-zap" href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos e quero saber mais sobre o ${nomeCarro(c)} ${anoTxt(c)} (${brl(c.preco)}).`)}" target="_blank" rel="noopener">${I.zap} Tirar dúvidas no WhatsApp</a>
+        </div>
+      </div>
+      <div class="car-more">
+        <div><h2>Sobre este carro</h2><p>${esc(c.descricao)}</p><p class="disclaimer">Fotos do próprio veículo, tiradas na loja. Confirme disponibilidade e valores com um consultor.</p></div>
+        <div><h2>Itens de destaque</h2><ul class="checks">${c.itens.map((t) => `<li>${I.check}<span>${esc(t)}</span></li>`).join("")}</ul></div>
+      </div>
+    </div>
+  </section>
+  ${outros.length ? `<section class="band band-graphite"><div class="wrap"><div class="sec-head"><div><p class="eyebrow">Veja também</p><h2 class="h2">Outros carros da loja</h2></div><a class="link-arrow" href="#estoque">Ver estoque ${I.arrowR}</a></div><div class="grid grid-3">${outros.map(card).join("")}</div></div></section>` : ""}`;
+}
+
+function bindCarro(c) {
+  let cur = 1;
+  const img = $("#g-img");
+  const set = (i) => {
+    cur = ((i - 1 + c.fotos) % c.fotos) + 1;
+    img.src = foto(c, cur);
+    img.alt = `${nomeCarro(c)}, foto ${cur}`;
+    $("#g-count").textContent = `${cur}/${c.fotos}`;
+    $$(".gallery .thumb").forEach((t) => t.setAttribute("aria-current", String(+t.dataset.g === cur)));
+  };
+  $(".gallery").addEventListener("click", (e) => {
+    const t = e.target.closest("[data-g],[data-gn],.g-main");
+    if (!t) return;
+    if (t.dataset.g) set(+t.dataset.g);
+    else if (t.dataset.gn) set(cur + +t.dataset.gn);
+    else openLightbox(c, cur);
+  });
+  // pré-carrega as outras fotos
+  range(c.fotos).slice(1).forEach((k) => { const i = new Image(); i.src = foto(c, k); });
+}
+
+function openLightbox(c, start) {
+  const d = $("#lightbox");
+  let cur = start;
+  d.innerHTML = `<div class="lb-top"><div><p>${esc(c.marca)} ${esc(c.modelo)}</p><span id="lb-n"></span></div><button class="x" type="button" data-close aria-label="Fechar fotos">${I.close}</button></div>
+    <div class="lb-stage" id="lb-stage"><button class="g-nav g-prev" type="button" data-ln="-1" aria-label="Foto anterior">${I.arrowL}</button><img id="lb-img" alt=""><button class="g-nav g-next" type="button" data-ln="1" aria-label="Próxima foto">${I.arrowR}</button></div>
+    <div class="lb-thumbs">${range(c.fotos).map((k) => `<button class="thumb" type="button" data-lt="${k}" aria-label="Foto ${k}"><img src="${foto(c, k, true)}" alt=""></button>`).join("")}</div>`;
+  const set = (k) => {
+    cur = ((k - 1 + c.fotos) % c.fotos) + 1;
+    const im = $("#lb-img", d);
+    im.src = foto(c, cur);
+    im.alt = `${nomeCarro(c)}, foto ${cur} de ${c.fotos}`;
+    $("#lb-n", d).textContent = `Foto ${cur} de ${c.fotos}`;
+    $$(".thumb", d).forEach((t) => t.setAttribute("aria-current", String(+t.dataset.lt === cur)));
+  };
+  d.onclick = (e) => {
+    const t = e.target.closest("[data-ln],[data-lt]");
+    if (t) t.dataset.ln ? set(cur + +t.dataset.ln) : set(+t.dataset.lt);
+    else if (e.target === d || e.target.id === "lb-stage") d.close();
+  };
+  d.onkeydown = (e) => { if (e.key === "ArrowRight") set(cur + 1); if (e.key === "ArrowLeft") set(cur - 1); };
+  let x0 = null;
+  const st = $("#lb-stage", d);
+  st.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  st.addEventListener("touchend", (e) => {
+    if (x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) set(cur + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  set(start);
+  d.showModal();
+}
+
+/* ---------- COMPRAR (formulário → WhatsApp) ---------- */
+const moneyMask = (el) => { const d = el.value.replace(/\D/g, "").slice(0, 9); el.value = d ? "R$ " + (+d).toLocaleString("pt-BR") : ""; };
+const kmMask = (el) => { const d = el.value.replace(/\D/g, "").slice(0, 7); el.value = d ? (+d).toLocaleString("pt-BR") : ""; };
+
+function openBuy(id, pag = "avista") {
+  const c = byId(id);
+  if (!c) return;
+  const dlg = $("#buy");
+  dlg.innerHTML = `<div class="sheet-inner">
+    <div class="sheet-head">
+      <img src="${foto(c, 1, true)}" alt="">
+      <div><p class="eyebrow">Comprar</p><h2 id="buy-title">${esc(c.marca)} ${esc(c.modelo)}</h2><p class="muted" style="font-size:14px">${esc(c.versao)} · ${anoTxt(c)} · ${kmTxt(c.km)}</p>${priceHTML(c.preco)}</div>
+      <button class="x" type="button" data-close aria-label="Fechar">${I.close}</button>
+    </div>
+    <form class="form" id="buy-form" novalidate>
+      <fieldset><legend>Como você quer pagar?</legend>
+        <div class="opts">
+          ${opt("buy-pag", "avista", "À vista", I.cash, "Consulte o desconto para pagamento à vista", pag === "avista")}
+          ${opt("buy-pag", "financiamento", "Financiamento", I.percent, "Escolha a entrada e o número de parcelas", pag === "financiamento")}
+          ${opt("buy-pag", "troca", "Troca", I.swap, "Use o seu carro como parte do pagamento", pag === "troca")}
+        </div>
+      </fieldset>
+      <div class="cond" data-cond="financiamento" hidden>
+        <div class="row2">
+          <label class="f" for="buy-entrada">Valor de entrada<input class="field" id="buy-entrada" inputmode="numeric" placeholder="R$ 0" data-money autocomplete="off"></label>
+          <label class="f" for="buy-prazo">Parcelas<select class="field" id="buy-prazo"><option value="">A combinar</option><option>12x</option><option>24x</option><option>36x</option><option selected>48x</option><option>60x</option></select></label>
+        </div>
+      </div>
+      <div class="cond" data-cond="troca" hidden>
+        <label class="f" for="buy-tcarro">Seu carro (marca, modelo e ano)<input class="field" id="buy-tcarro" placeholder="Ex.: Fiat Argo 1.0 2020" autocomplete="off"></label>
+        <div class="row2">
+          <label class="f" for="buy-tkm">Quilometragem<input class="field" id="buy-tkm" inputmode="numeric" placeholder="Ex.: 45.000" data-km autocomplete="off"></label>
+          <label class="f" for="buy-trest">A diferença eu pago<select class="field" id="buy-trest"><option>À vista</option><option>Financiado</option><option>A combinar</option></select></label>
+        </div>
+      </div>
+      <div class="row2">
+        <label class="f" for="buy-nome"><span>Seu nome <span class="req" aria-hidden="true">*</span></span><input class="field" id="buy-nome" autocomplete="name" placeholder="Como podemos te chamar?" required><span class="err" id="buy-nome-err" hidden>Digite seu nome para enviar.</span></label>
+        <label class="f" for="buy-cidade">Cidade<input class="field" id="buy-cidade" autocomplete="address-level2" placeholder="Sua cidade"></label>
+      </div>
+      <fieldset><legend>Falar com</legend><div class="chips">${chipsVend("buy")}</div></fieldset>
+      <div class="msg-preview"><p class="lbl">Mensagem que vai para o WhatsApp</p><pre id="buy-msg"></pre></div>
+      <a class="btn btn-zap btn-block" id="buy-send" href="#" target="_blank" rel="noopener">${I.zap} Enviar pelo WhatsApp</a>
+      <p class="fine">O WhatsApp abre com a mensagem pronta. É só tocar em enviar.</p>
+    </form>
+  </div>`;
+
+  const form = $("#buy-form", dlg), send = $("#buy-send", dlg);
+  const build = () => {
+    const v = pickVend("buy");
+    const p = $('input[name="buy-pag"]:checked', form).value;
+    const n = $("#buy-nome").value.trim(), cid = $("#buy-cidade").value.trim();
+    const L = [`Olá, ${v.nome}! Vim pelo site da Lopes Veículos.`, "", `Tenho interesse no *${nomeCarro(c)}* ${anoTxt(c)}, anunciado por ${brl(c.preco)}.`, ""];
+    if (p === "avista") L.push("*Pagamento:* à vista", "Qual o desconto para pagamento à vista?");
+    if (p === "financiamento") L.push("*Pagamento:* financiamento", `• Entrada: ${$("#buy-entrada").value || "a combinar"}`, `• Parcelas: ${$("#buy-prazo").value || "a combinar"}`);
+    if (p === "troca") {
+      L.push("*Pagamento:* troca", `• Meu carro: ${$("#buy-tcarro").value.trim() || "(conto na conversa)"}`);
+      if ($("#buy-tkm").value) L.push(`• Quilometragem: ${$("#buy-tkm").value} km`);
+      L.push(`• A diferença: ${$("#buy-trest").value.toLowerCase()}`);
+    }
+    L.push("", `*Nome:* ${n || "—"}`);
+    if (cid) L.push(`*Cidade:* ${cid}`);
+    const msg = L.join("\n");
+    $("#buy-msg").textContent = msg;
+    send.href = wa(v.tel, msg);
+    $$(".cond", form).forEach((el) => (el.hidden = el.dataset.cond !== p));
+  };
+  form.addEventListener("input", (e) => {
+    if (e.target.matches("[data-money]")) moneyMask(e.target);
+    if (e.target.matches("[data-km]")) kmMask(e.target);
+    if (e.target.id === "buy-nome" && e.target.value.trim()) { e.target.removeAttribute("aria-invalid"); $("#buy-nome-err").hidden = true; }
+    build();
+  });
+  form.addEventListener("submit", (e) => e.preventDefault());
+  send.addEventListener("click", (e) => {
+    const nm = $("#buy-nome");
+    if (!nm.value.trim()) {
+      e.preventDefault();
+      nm.setAttribute("aria-invalid", "true");
+      $("#buy-nome-err").hidden = false;
+      nm.focus();
+      return;
+    }
+  });
+  dlg.onclick = (e) => { if (e.target === dlg) dlg.close(); };
+  build();
+  dlg.showModal();
+  setTimeout(() => $(".sheet-inner", dlg).scrollTo(0, 0), 0);
+}
+
+/* ---------- VENDER MEU CARRO ---------- */
+function viewVender() {
+  return `
+  <section class="page-head">
+    ${carLine()}
+    <div class="wrap">
+      <p class="eyebrow">Venda ou troca</p>
+      <h1>Venda ou troque seu carro</h1>
+      <p class="lead">Conte como é o seu carro e receba uma proposta da Lopes pelo WhatsApp. Se preferir, ele entra como parte do pagamento de um carro do nosso estoque.</p>
+      <ol class="mini-steps">
+        <li><b>1</b><span>Preencha os dados do seu carro</span></li>
+        <li><b>2</b><span>Envie pelo WhatsApp e mande as fotos</span></li>
+        <li><b>3</b><span>Receba a avaliação da Lopes</span></li>
+      </ol>
+    </div>
+  </section>
+  <section class="band" style="padding-top:48px">
+    <div class="wrap sell-grid">
+      <form class="form" id="sell-form" novalidate>
+        <div class="panel">
+          <h2>Seu carro</h2>
+          <div class="row2">
+            <label class="f" for="s-marca"><span>Marca <span class="req" aria-hidden="true">*</span></span><input class="field" id="s-marca" placeholder="Ex.: Chevrolet" required data-req autocomplete="off"></label>
+            <label class="f" for="s-modelo"><span>Modelo <span class="req" aria-hidden="true">*</span></span><input class="field" id="s-modelo" placeholder="Ex.: Onix" required data-req autocomplete="off"></label>
+          </div>
+          <div class="row3">
+            <label class="f" for="s-versao">Versão / motor<input class="field" id="s-versao" placeholder="Ex.: 1.0 LT" autocomplete="off"></label>
+            <label class="f" for="s-ano"><span>Ano <span class="req" aria-hidden="true">*</span></span><input class="field" id="s-ano" inputmode="numeric" placeholder="Ex.: 2020/2021" required data-req autocomplete="off"></label>
+            <label class="f" for="s-km"><span>Km <span class="req" aria-hidden="true">*</span></span><input class="field" id="s-km" inputmode="numeric" placeholder="Ex.: 52.000" required data-req data-km autocomplete="off"></label>
+          </div>
+          <div class="row2">
+            <label class="f" for="s-cor">Cor<input class="field" id="s-cor" placeholder="Ex.: Prata" autocomplete="off"></label>
+            <label class="f" for="s-cambio">Câmbio<select class="field" id="s-cambio"><option>Manual</option><option>Automático</option></select></label>
+          </div>
+          <fieldset><legend>Estado de conservação</legend><div class="chips">
+            ${["Excelente", "Bom", "Precisa de reparos"].map((t, i) => `<label class="chip"><input type="radio" name="s-estado" id="s-estado-${i}" value="${t}" ${i === 1 ? "checked" : ""}><span>${t}</span></label>`).join("")}
+          </div></fieldset>
+          <fieldset><legend>Situação</legend><div class="chips">
+            ${["Quitado", "Financiado"].map((t, i) => `<label class="chip"><input type="radio" name="s-sit" id="s-sit-${i}" value="${t}" ${i === 0 ? "checked" : ""}><span>${t}</span></label>`).join("")}
+          </div></fieldset>
+          <div class="row2">
+            <label class="f" for="s-valor">Quanto você quer nele<input class="field" id="s-valor" inputmode="numeric" placeholder="R$ 0" data-money autocomplete="off"></label>
+            <span></span>
+          </div>
+          <label class="f" for="s-obs">Observações<textarea class="field" id="s-obs" placeholder="Revisões em dia, pneus novos, único dono, algum detalhe na pintura..."></textarea></label>
+        </div>
+
+        <div class="panel">
+          <h2>O que você quer fazer?</h2>
+          <div class="opts" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+            ${opt("s-obj", "vender", "Vender", I.cash, "Quero receber o valor do meu carro", true)}
+            ${opt("s-obj", "trocar", "Trocar", I.swap, "Quero dar meu carro na troca por um da loja", false)}
+          </div>
+          <div class="cond" data-cond="trocar" hidden>
+            <label class="f" for="s-interesse">Carro da loja que te interessa<select class="field" id="s-interesse"><option value="">Ainda não sei</option>${CARROS.map((c) => `<option value="${c.id}">${esc(nomeCarro(c))} ${anoTxt(c)}</option>`).join("")}</select></label>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Seus dados</h2>
+          <div class="row2">
+            <label class="f" for="s-nome"><span>Seu nome <span class="req" aria-hidden="true">*</span></span><input class="field" id="s-nome" autocomplete="name" placeholder="Como podemos te chamar?" required data-req></label>
+            <label class="f" for="s-cidade">Cidade<input class="field" id="s-cidade" autocomplete="address-level2" placeholder="Sua cidade"></label>
+          </div>
+          <fieldset><legend>Falar com</legend><div class="chips">${chipsVend("s")}</div></fieldset>
+        </div>
+      </form>
+
+      <aside class="sell-side">
+        <div class="panel">
+          <h2>Sua mensagem</h2>
+          <div class="msg-preview"><pre id="sell-msg"></pre></div>
+          <p class="err" id="sell-err" hidden>Preencha os campos marcados com * para enviar.</p>
+          <a class="btn btn-zap btn-block" id="sell-send" href="#" target="_blank" rel="noopener">${I.zap} Enviar pelo WhatsApp</a>
+          <p class="fine">Depois de enviar, mande as fotos do carro na mesma conversa.</p>
+        </div>
+        <div class="panel">
+          <h2 style="font-size:20px">Fotos que ajudam na avaliação</h2>
+          <ul class="tips">
+            ${["Frente, traseira e as duas laterais", "Interior: bancos, volante e painel", "Painel ligado mostrando a quilometragem", "Pneus e qualquer detalhe na lataria"].map((t) => `<li>${I.camera}<span>${t}</span></li>`).join("")}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>`;
+}
+
+function bindVender() {
+  const form = $("#sell-form"), send = $("#sell-send");
+  const val = (id) => $("#" + id).value.trim();
+  const build = () => {
+    const v = pickVend("s");
+    const obj = $('input[name="s-obj"]:checked').value;
+    const L = [`Olá, ${v.nome}! Vim pelo site da Lopes Veículos.`, "", obj === "trocar" ? "Quero *trocar* meu carro por um da loja." : "Quero *vender* meu carro.", "", "*Meu carro*"];
+    L.push(`• ${[val("s-marca"), val("s-modelo"), val("s-versao")].filter(Boolean).join(" ") || "—"}`);
+    if (val("s-ano")) L.push(`• Ano: ${val("s-ano")}`);
+    if (val("s-km")) L.push(`• Km: ${val("s-km")}`);
+    if (val("s-cor")) L.push(`• Cor: ${val("s-cor")}`);
+    L.push(`• Câmbio: ${val("s-cambio").toLowerCase()}`);
+    L.push(`• Estado: ${$('input[name="s-estado"]:checked').value.toLowerCase()}`);
+    L.push(`• Situação: ${$('input[name="s-sit"]:checked').value.toLowerCase()}`);
+    if (val("s-valor")) L.push(`• Valor pretendido: ${val("s-valor")}`);
+    if (val("s-obs")) L.push(`• Obs.: ${val("s-obs")}`);
+    if (obj === "trocar") { const c = byId($("#s-interesse").value); L.push("", `*Interesse:* ${c ? `${nomeCarro(c)} ${anoTxt(c)}` : "ainda não escolhi"}`); }
+    L.push("", `*Nome:* ${val("s-nome") || "—"}`);
+    if (val("s-cidade")) L.push(`*Cidade:* ${val("s-cidade")}`);
+    L.push("", "Vou mandar as fotos aqui na conversa.");
+    const msg = L.join("\n");
+    $("#sell-msg").textContent = msg;
+    send.href = wa(v.tel, msg);
+    $$(".cond", form).forEach((el) => (el.hidden = el.dataset.cond !== obj));
+  };
+  form.addEventListener("input", (e) => {
+    if (e.target.matches("[data-money]")) moneyMask(e.target);
+    if (e.target.matches("[data-km]")) kmMask(e.target);
+    if (e.target.matches("[data-req]") && e.target.value.trim()) e.target.removeAttribute("aria-invalid");
+    if (!$$("[data-req]", form).some((f) => !f.value.trim())) $("#sell-err").hidden = true;
+    build();
+  });
+  form.addEventListener("submit", (e) => e.preventDefault());
+  send.addEventListener("click", (e) => {
+    const bad = $$("[data-req]", form).filter((f) => !f.value.trim());
+    if (bad.length) {
+      e.preventDefault();
+      bad.forEach((f) => f.setAttribute("aria-invalid", "true"));
+      $("#sell-err").hidden = false;
+      bad[0].focus();
+      return;
+    }
+    toast("Abrindo o WhatsApp…");
+  });
+  build();
+}
+
+/* ---------- SOBRE ---------- */
+function viewSobre() {
+  const v = daVez();
+  const endereco = LOJA.endereco
+    ? `<p class="big">${esc(LOJA.endereco)}</p>${LOJA.horario ? `<p class="muted" style="display:flex;gap:8px;align-items:center">${I.clock}<span>${esc(LOJA.horario)}</span></p>` : ""}
+       <div><a class="btn btn-ghost btn-sm" href="${LOJA.mapa || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(LOJA.endereco)}" target="_blank" rel="noopener">${I.pin} Como chegar</a></div>`
+    : `<p class="muted">Peça a localização e combine o melhor horário para ver os carros de perto.</p>
+       <div><a class="btn btn-ghost btn-sm" href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos. Pode me mandar a localização da loja?`)}" target="_blank" rel="noopener">${I.zap} Pedir localização</a></div>`;
+  return `
+  <section class="band" style="padding-top:64px">
+    <div class="wrap about">
+      <div class="about-mark" aria-hidden="true">${carLine("draw")}<span class="w1">LOPES</span><span class="w2">VEÍCULOS</span></div>
+      <div class="about-copy">
+        <p class="eyebrow">Sobre nós</p>
+        <h1 class="h2">Carro bom, conversa direta</h1>
+        <p>A <strong>Lopes Veículos</strong> é uma loja de seminovos que trabalha do jeito que a gente gosta de ser atendido: carro bem cuidado, preço claro e conversa direta com quem vende.</p>
+        <p>Cada carro é conferido antes de ir para a vitrine. Você escolhe como pagar, à vista, financiado ou com o seu usado na troca, e a nossa equipe acompanha você até a entrega das chaves.</p>
+        <div class="sr-actions"><a class="btn btn-red" href="#estoque">Ver estoque</a><button class="btn btn-ghost" type="button" data-fab-open>${I.zap} Falar no WhatsApp</button></div>
+      </div>
+    </div>
+  </section>
+  <section class="band band-graphite" aria-labelledby="ct-t">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Contato</p><h2 class="h2" id="ct-t">Fale com a Lopes</h2></div></div>
+      <div class="contact-grid">
+        <a class="ig-card" href="${IG_URL}" target="_blank" rel="noopener">
+          <span class="ig-icon">${I.ig}</span>
+          <div><p class="eyebrow">Siga no Instagram</p><p class="ig-handle">@${esc(LOJA.instagram)}</p><p>Estoque atualizado, vídeos dos carros e chegadas da semana.</p></div>
+          <span class="btn btn-red">Seguir ${I.arrowR}</span>
+        </a>
+        <div class="c-card">
+          <h3>${I.zap} WhatsApp e telefones</h3>
+          <div class="c-list">${LOJA.vendedores.map((p) => `<div class="c-row"><div><b>${esc(p.nome)}</b><span>${telTxt(p.tel)}</span></div><div style="display:flex;gap:6px"><button class="icon-btn" type="button" data-copy="${telTxt(p.tel)}" aria-label="Copiar número de ${esc(p.nome)}">${I.copy}</button><a class="icon-btn" href="${wa(p.tel, `Olá, ${p.nome}! Vim pelo site da Lopes Veículos.`)}" target="_blank" rel="noopener" aria-label="Chamar ${esc(p.nome)} no WhatsApp">${I.zap}</a></div></div>`).join("")}</div>
+        </div>
+        <div class="c-card">
+          <h3>${I.mail} E-mail</h3>
+          <p class="big"><span>${esc(LOJA.email)}</span></p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(LOJA.email)}">${I.copy} Copiar</button><a class="btn btn-ghost btn-sm" href="mailto:${esc(LOJA.email)}">${I.mail} Escrever</a></div>
+        </div>
+        <div class="c-card">
+          <h3>${I.pin} Visite a loja</h3>
+          ${endereco}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="sell">${carLine()}<div><p class="eyebrow">Venda ou troca</p><h2>Tem um carro para vender?</h2><p class="muted">Mande os dados e receba uma proposta. Ele pode virar entrada no seu próximo carro.</p></div><a class="btn btn-red" href="#vender">Avaliar meu carro ${I.arrowR}</a></div>
+    </div>
+  </section>`;
+}
+
+/* ---------- roteador ---------- */
+function render() {
+  cleanups.forEach((f) => { try { f(); } catch (e) {} });
+  cleanups = [];
+  if ($("#buy").open) $("#buy").close();
+  if ($("#lightbox").open) $("#lightbox").close();
+  const h = decodeURIComponent(location.hash.replace(/^#/, "")) || "inicio";
+  let html = "", nav = h, title = "", after = null;
+  if (h.startsWith("carro-")) {
+    const c = byId(h.slice(6));
+    if (c) { html = viewCarro(c); nav = "estoque"; title = `${c.marca} ${c.modelo}`; after = () => bindCarro(c); }
+  }
+  if (!html) {
+    if (h === "estoque") { html = viewEstoque(); title = "Estoque"; after = bindEstoque; }
+    else if (h === "vender") { html = viewVender(); title = "Vender meu carro"; after = bindVender; }
+    else if (h === "sobre") { html = viewSobre(); title = "Sobre e contato"; }
+    else { html = viewHome(); nav = "inicio"; after = bindHome; }
+  }
+  main.innerHTML = html;
+  document.title = title ? `${title} · Lopes Veículos` : "Lopes Veículos · Seminovos";
+  $$("[data-nav]").forEach((a) => (a.dataset.nav === nav ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
+  closeDrawer();
+  closeFab();
+  window.scrollTo(0, 0);
+  if (after) after();
+}
+
+/* ---------- menu, WhatsApp flutuante, favoritos ---------- */
+function openDrawer() { const d = $("#drawer"); d.hidden = false; document.body.style.overflow = "hidden"; $("#menu-open").setAttribute("aria-expanded", "true"); $("#menu-close").focus(); }
+function closeDrawer() { const d = $("#drawer"); if (d.hidden) return; d.hidden = true; document.body.style.overflow = ""; $("#menu-open").setAttribute("aria-expanded", "false"); }
+function openFab() { $("#fab-panel").hidden = false; $("#fab-btn").setAttribute("aria-expanded", "true"); }
+function closeFab() { $("#fab-panel").hidden = true; $("#fab-btn").setAttribute("aria-expanded", "false"); }
+
+function toggleFav(id) {
+  favs.has(id) ? favs.delete(id) : favs.add(id);
+  store.set("lopes-favoritos", [...favs]);
+  const on = favs.has(id);
+  $$(`[data-fav="${id}"]`).forEach((b) => b.setAttribute("aria-pressed", String(on)));
+  const n = $("#f-favs-n");
+  if (n) n.textContent = favs.size;
+  if (F.favs && bindEstoque.refresh && $("#grid")) bindEstoque.refresh();
+  toast(on ? "Salvo nos favoritos" : "Removido dos favoritos");
+}
+
+function init() {
+  document.documentElement.lang = "pt-BR";
+  $$("[data-icon]").forEach((el) => { el.outerHTML = I[el.dataset.icon] || ""; });
+  const hig = $("#hdr-ig"); hig.href = IG_URL; hig.innerHTML = I.ig;
+  const fig = $("#ft-ig"); fig.href = IG_URL; fig.innerHTML = `${I.ig} @${esc(LOJA.instagram)}`;
+  $("#ft-zap").innerHTML = LOJA.vendedores.map((v) => `<li><a href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos.`)}" target="_blank" rel="noopener">${esc(v.nome)} · ${telTxt(v.tel)}</a></li>`).join("");
+  $("#ft-contato").innerHTML = [
+    `<li><a href="mailto:${esc(LOJA.email)}">${esc(LOJA.email)}</a></li>`,
+    `<li><a href="${IG_URL}" target="_blank" rel="noopener">Instagram @${esc(LOJA.instagram)}</a></li>`,
+    LOJA.endereco ? `<li><a href="${LOJA.mapa || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(LOJA.endereco)}" target="_blank" rel="noopener">${esc(LOJA.endereco)}</a></li>` : "",
+    LOJA.horario ? `<li style="color:var(--fog)">${esc(LOJA.horario)}</li>` : "",
+  ].join("");
+  $("#ano").textContent = new Date().getFullYear();
+  $("#fab-panel").innerHTML = `<p>Fale com um consultor no WhatsApp</p>` + LOJA.vendedores.map((v) =>
+    `<a href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos.`)}" target="_blank" rel="noopener"><span class="avatar" aria-hidden="true">${esc(v.nome[0])}</span><div><b>${esc(v.nome)}</b><span>${telTxt(v.tel)}</span></div></a>`).join("");
+  $("#drawer-zap").innerHTML = LOJA.vendedores.map((v) => `<a class="btn btn-zap" href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos.`)}" target="_blank" rel="noopener">${I.zap} Chamar ${esc(v.nome)}</a>`).join("") + `<a class="btn btn-ghost" href="${IG_URL}" target="_blank" rel="noopener">${I.ig} @${esc(LOJA.instagram)}</a>`;
+
+  $("#menu-open").addEventListener("click", openDrawer);
+  $("#menu-close").addEventListener("click", closeDrawer);
+  $("#drawer").addEventListener("click", (e) => { if (e.target.closest("a[href^='#']")) closeDrawer(); });
+  $("#fab-btn").addEventListener("click", (e) => { e.stopPropagation(); $("#fab-panel").hidden ? openFab() : closeFab(); });
+
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-buy],[data-fav],[data-copy],[data-fab-open],[data-close]");
+    if (!t) { if (!e.target.closest("#fab")) closeFab(); return; }
+    if (t.dataset.buy) { e.preventDefault(); openBuy(t.dataset.buy, t.dataset.pag || "avista"); }
+    else if (t.dataset.fav) { e.preventDefault(); toggleFav(t.dataset.fav); }
+    else if (t.dataset.copy !== undefined) { e.preventDefault(); copyText(t.dataset.copy, t); }
+    else if (t.hasAttribute("data-fab-open")) { e.stopPropagation(); closeDrawer(); openFab(); $("#fab-panel a")?.focus(); }
+    else if (t.hasAttribute("data-close")) { t.closest("dialog")?.close(); }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    closeFab(); closeDrawer();
+    const f = $("#filters.open"); if (f) { f.classList.remove("open"); document.body.style.overflow = ""; }
+  });
+  addEventListener("hashchange", render);
+  render();
+}
+init();
+
+</script>
+</body>
+</html>
