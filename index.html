@@ -396,9 +396,25 @@ input[type="range"]{width:100%;accent-color:var(--brake);cursor:pointer}
 .crumbs span[aria-current]{color:var(--chalk)}
 .car-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:start}
 .gallery{display:grid;gap:12px;min-width:0}
-.g-main{position:relative;display:block;width:100%;aspect-ratio:5/4;padding:0;border:0;border-radius:var(--r);overflow:hidden;cursor:zoom-in;background:var(--steel)}
-.g-main img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
-.g-main .badge{position:absolute;right:14px;bottom:14px}
+.g-stage{position:relative;width:100%;aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;background:var(--plate-ink)}
+.g-zoom{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.g-zoom img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
+.g-zoom .badge{position:absolute;right:14px;bottom:14px}
+.g-stage video{display:block;width:100%;height:100%;object-fit:contain;background:var(--plate-ink)}
+.g-stage video + .g-nav,.g-stage video ~ .g-nav{top:40%}
+.g-empty{display:grid;justify-items:center;align-content:center;gap:16px;aspect-ratio:5/4;padding:24px;border-radius:var(--r);border:1px dashed var(--rim);background:radial-gradient(circle at 50% 40%,var(--steel-hi),var(--graphite) 75%);text-align:center}
+.g-empty .carline{width:min(340px,70%);opacity:.6}
+.g-empty p{color:var(--fog)}
+.noimg{position:absolute;inset:0;display:grid;justify-items:center;align-content:center;gap:12px;background:radial-gradient(circle at 50% 42%,var(--steel-hi),var(--graphite) 78%)}
+.noimg .carline{width:58%;opacity:.5}
+.noimg span{font-size:11px;font-weight:700;font-stretch:118%;letter-spacing:.2em;text-transform:uppercase;color:var(--fog)}
+.hero-photo .noimg .carline{width:70%}
+.thumb{position:relative}
+.thumb.is-vid::after{content:"";position:absolute;inset:0;background:rgba(8,9,11,.35) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.5v13l10.5-6.5z' fill='%23F4F2ED'/%3E%3C/svg%3E") no-repeat center/22px}
+.badge svg{width:12px;height:12px}
+.card-media .badge-vid{top:auto;bottom:12px}
+.sheet-noimg{width:84px;height:84px;border-radius:4px;display:grid;place-items:center;background:var(--steel-hi)}
+.sheet-noimg .carline{width:70%}
 .g-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--shade);color:var(--chalk);cursor:pointer}
 .g-nav svg{width:20px;height:20px}
 .g-prev{left:14px}.g-next{right:14px}
@@ -482,7 +498,9 @@ dialog::backdrop{background:rgba(6,7,9,.78);backdrop-filter:blur(4px)}
 .lb-top p{font-family:var(--display);font-size:20px}
 .lb-top span{color:var(--fog);font-size:14px;font-variant-numeric:tabular-nums}
 .lb-stage{position:relative;display:grid;place-items:center;min-height:0;padding:0 64px}
-.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px}
+.lb-media{display:grid;place-items:center;width:100%;height:100%;min-height:0}
+.lb-stage img,.lb-stage video{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px}
+.lb-stage video{height:100%}
 .lb-stage .g-prev{left:max(12px,env(safe-area-inset-left,0px))}.lb-stage .g-next{right:max(12px,env(safe-area-inset-right,0px))}
 .lb-thumbs{display:flex;justify-content:center;gap:8px;padding:14px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));overflow-x:auto}
 .lb-thumbs .thumb{width:60px}
@@ -506,8 +524,12 @@ dialog::backdrop{background:rgba(6,7,9,.78);backdrop-filter:blur(4px)}
 
 /* ---------- about ---------- */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
-.about-mark{display:grid;justify-items:center;gap:10px;padding:56px 32px;border-radius:var(--r);background:radial-gradient(circle at 50% 40%,var(--steel-hi),var(--graphite) 70%);border:1px solid var(--rim)}
-.about-mark .carline{width:min(420px,90%)}
+.about-mark{position:relative;overflow:hidden;display:grid;justify-items:center;align-content:center;min-height:440px;padding:56px 32px;border-radius:var(--r);background:var(--graphite);border:1px solid var(--rim)}
+.about-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32}
+.about-mark::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(19,20,24,.25),rgba(19,20,24,.8) 80%)}
+.about-lock{position:relative;z-index:1;display:grid;justify-items:center;gap:10px;width:100%}
+.about-badge{position:absolute;left:16px;bottom:16px;z-index:2}
+.about-mark .carline{width:min(420px,90%);filter:drop-shadow(0 0 18px rgba(213,39,47,.45))}
 .about-mark .w1{font-family:var(--display);font-weight:700;font-size:clamp(56px,8vw,96px);line-height:.95;letter-spacing:.04em}
 .about-mark .w2{display:flex;align-items:center;gap:16px;font-family:var(--display);font-weight:600;font-size:clamp(14px,2vw,20px);letter-spacing:.45em;margin-right:-.45em}
 .about-mark .w2::before,.about-mark .w2::after{content:"";width:46px;height:2px;background:var(--brake)}
@@ -687,42 +709,98 @@ const LOJA = {
   ],
 };
 
-/* fotos: quantidade de arquivos img/<id>-1.jpg, <id>-2.jpg... (a 1ª é a capa; a 2ª aparece ao passar o mouse)
-   novo: true  -> aparece na Vitrine com o selo "Recém-chegado"
-   destaque: true -> carro do topo da página inicial
-   ATENÇÃO: preço, km, anos e itens são EXEMPLOS. Troque pelos dados reais antes de publicar. */
+/* Cada carro: id (sem espaço), marca, modelo, versao, ano, preco, cor, tipo (carroceria)
+   fotos: quantos arquivos img/<id>-1.jpg, <id>-2.jpg... existem (a 1ª é a capa; 0 = "Fotos em breve")
+   videos: quantos arquivos video/<id>-1.mp4 (com capa video/<id>-1.jpg) existem
+   cambio, combustivel, portas, placaFinal: opcionais, só aparecem se preenchidos
+   vitrine: true -> aparece na Vitrine da página inicial | destaque: true -> carro do topo da página
+   A ordem da lista é a ordem de "Destaques" no estoque. */
 const CARROS = [
   {
-    id: "tcross", marca: "Volkswagen", modelo: "T-Cross", versao: "200 TSI",
-    anoFab: 2024, anoMod: 2025, km: 21000, preco: 132900,
-    cambio: "Automático", combustivel: "Flex", cor: "Branco", tipo: "SUV", portas: 4, placaFinal: "6",
-    fotos: 5, novo: true, destaque: true,
+    id: "tcross2026", marca: "Volkswagen", modelo: "T-Cross", versao: "200 TSI", ano: 2026, preco: 125000,
+    cor: "Branco", tipo: "SUV", placaFinal: "6", fotos: 7, videos: 0, vitrine: true, destaque: true,
     itens: ["Painel de instrumentos digital", "Central multimídia de tela flutuante", "Lanternas em LED com barra de luz", "Rodas de liga leve diamantadas", "Rack de teto", "Motor 1.0 turbo (TSI)"],
-    descricao: "SUV da linha nova, com a barra de luz na traseira e a central multimídia de tela flutuante. Motor 1.0 turbo econômico, câmbio automático e espaço de sobra para a família. Carro conservado e pronto para rodar.",
+    descricao: "T-Cross da linha nova, na cor branca, com a barra de luz na traseira, painel digital e central multimídia de tela flutuante. Motor 1.0 turbo 200 TSI.",
   },
   {
-    id: "nivus", marca: "Volkswagen", modelo: "Nivus", versao: "200 TSI",
-    anoFab: 2022, anoMod: 2023, km: 38500, preco: 109900,
-    cambio: "Automático", combustivel: "Flex", cor: "Cinza", tipo: "SUV Cupê", portas: 4, placaFinal: "5",
-    fotos: 5, novo: true,
-    itens: ["Painel de instrumentos digital", "Central multimídia VW Play", "Faróis com luz diurna em LED", "Rodas de liga leve", "Rack de teto", "Motor 1.0 turbo (TSI)"],
-    descricao: "SUV cupê de visual esportivo, na cor cinza que valoriza as linhas do carro. Motor 1.0 turbo com câmbio automático, painel digital e central multimídia. Ótimo para cidade e estrada.",
+    id: "nivus", marca: "Volkswagen", modelo: "Nivus", versao: "200 TSI", ano: 2024, preco: 105000,
+    cor: "Cinza", tipo: "SUV Cupê", cambio: "Automático", placaFinal: "5", fotos: 7, videos: 2, vitrine: true,
+    itens: ["Câmbio automático", "Painel de instrumentos digital", "Central multimídia VW Play", "Faróis com luz diurna em LED", "Rodas de liga leve", "Rack de teto"],
+    descricao: "SUV cupê de visual esportivo, na cor cinza. Motor 1.0 turbo 200 TSI com câmbio automático, painel digital e central multimídia. Veja os vídeos por dentro e por fora.",
   },
   {
-    id: "hb20", marca: "Hyundai", modelo: "HB20", versao: "1.6",
-    anoFab: 2019, anoMod: 2019, km: 64000, preco: 69900,
-    cambio: "Automático", combustivel: "Flex", cor: "Branco", tipo: "Hatch", portas: 4, placaFinal: "9",
-    fotos: 4, novo: true,
-    itens: ["Câmbio automático", "Rodas de liga leve", "Ar-condicionado", "Vidros e travas elétricas", "Grade dianteira da linha 2019"],
-    descricao: "Hatch econômico e fácil de manter, com motor 1.6 e câmbio automático. Ideal para o dia a dia na cidade. Pintura branca conservada e interior bem cuidado.",
+    id: "corolla2019", marca: "Toyota", modelo: "Corolla", versao: "", ano: 2019, preco: 103000,
+    cor: "Prata", tipo: "Sedã", placaFinal: "7", fotos: 2, videos: 0, vitrine: true,
+    itens: ["Faróis com luz diurna em LED", "Rodas de liga leve"],
+    descricao: "Corolla 2019 prata, sedã confortável e espaçoso para a família e para a estrada.",
   },
   {
-    id: "veloster", marca: "Hyundai", modelo: "Veloster", versao: "1.6 16V",
-    anoFab: 2012, anoMod: 2012, km: 89000, preco: 54900,
-    cambio: "Automático", combustivel: "Gasolina", cor: "Preto", tipo: "Esportivo", portas: 3, placaFinal: "0",
-    fotos: 5, novo: true,
-    itens: ["Teto panorâmico", "Bancos em couro", "Câmbio automático", "Central multimídia", "Rodas de liga leve aro 18", "Pedaleiras esportivas"],
+    id: "tcross2025", marca: "Volkswagen", modelo: "T-Cross", versao: "200 TSI", ano: 2025, preco: 120000,
+    cor: "Preto", tipo: "SUV", placaFinal: "5", fotos: 3, videos: 0,
+    itens: ["Painel de instrumentos digital", "Central multimídia de tela flutuante", "Lanternas em LED com barra de luz", "Rodas de liga leve", "Rack de teto"],
+    descricao: "T-Cross preto da linha nova, com a barra de luz na traseira, painel digital e central multimídia. Motor 1.0 turbo 200 TSI.",
+  },
+  {
+    id: "hrv", marca: "Honda", modelo: "HR-V", versao: "", ano: 2017, preco: 90000,
+    cor: "Vermelho", tipo: "SUV", placaFinal: "4", fotos: 2, videos: 4, vitrine: true,
+    itens: ["Rodas de liga leve"],
+    descricao: "HR-V vermelho, SUV espaçoso e confortável. Veja nos vídeos o interior, as portas e o motor.",
+  },
+  {
+    id: "veloster", marca: "Hyundai", modelo: "Veloster", versao: "1.6", ano: 2013, preco: 60000,
+    cor: "Preto", tipo: "Esportivo", cambio: "Automático", combustivel: "Gasolina", portas: 3, placaFinal: "0", fotos: 7, videos: 0, vitrine: true,
+    itens: ["Teto panorâmico", "Bancos em couro", "Câmbio automático", "Central multimídia", "Rodas de liga leve", "Pedaleiras esportivas"],
     descricao: "O esportivo de 3 portas que chama atenção por onde passa: uma porta do lado do motorista e duas do lado do passageiro. Teto panorâmico, bancos em couro e câmbio automático.",
+  },
+  {
+    id: "fusca", marca: "Volkswagen", modelo: "Fusca", versao: "", ano: 1972, preco: 30000,
+    cor: "Verde", tipo: "Clássico", combustivel: "Gasolina", placaFinal: "7", fotos: 2, videos: 0, vitrine: true,
+    itens: ["Pneus com faixa branca", "Para-choques cromados"],
+    descricao: "Fusca 1972 verde, um clássico para colecionar ou para passear no fim de semana.",
+  },
+  {
+    id: "c3", marca: "Citroën", modelo: "C3", versao: "", ano: 2016, preco: 42000,
+    cor: "Cinza", tipo: "Hatch", placaFinal: "2", fotos: 2, videos: 0,
+    itens: [],
+    descricao: "C3 2016 cinza, hatch confortável para o dia a dia na cidade.",
+  },
+  {
+    id: "livina", marca: "Nissan", modelo: "Livina", versao: "X-Gear", ano: 2012, preco: 35000,
+    cor: "Cinza", tipo: "Minivan", placaFinal: "8", fotos: 2, videos: 0,
+    itens: ["Versão aventureira X-Gear", "Rack de teto", "Rodas escurecidas"],
+    descricao: "Livina X-Gear cinza, minivan versátil com visual aventureiro e bom espaço interno.",
+  },
+  {
+    id: "corolla2000", marca: "Toyota", modelo: "Corolla", versao: "", ano: 2000, preco: 32000,
+    cor: "Prata", tipo: "Sedã", placaFinal: "2", fotos: 4, videos: 0,
+    itens: ["Engate para reboque"],
+    descricao: "Corolla 2000 prata, o sedã conhecido pela durabilidade.",
+  },
+  {
+    id: "ka", marca: "Ford", modelo: "Ka", versao: "", ano: 2011, preco: 21000,
+    cor: "Vermelho", tipo: "Hatch", placaFinal: "2", fotos: 1, videos: 0,
+    itens: [],
+    descricao: "Ford Ka 2011 vermelho, compacto e fácil de estacionar. Ótimo como primeiro carro.",
+  },
+  {
+    id: "taos", marca: "Volkswagen", modelo: "Taos", versao: "", ano: 2022, preco: 135000,
+    tipo: "SUV", fotos: 0, videos: 0, itens: [],
+    descricao: "Volkswagen Taos 2022. As fotos deste carro chegam em breve: peça fotos e vídeo para um consultor pelo WhatsApp.",
+  },
+  {
+    id: "d20", marca: "Chevrolet", modelo: "D20", versao: "", ano: 1994, preco: 95900,
+    tipo: "Picape", combustivel: "Diesel", fotos: 0, videos: 0, itens: [],
+    descricao: "Chevrolet D20 1994, picape a diesel. As fotos chegam em breve: peça fotos e vídeo para um consultor pelo WhatsApp.",
+  },
+  {
+    id: "ix35", marca: "Hyundai", modelo: "ix35", versao: "", ano: 2017, preco: 80000,
+    tipo: "SUV", fotos: 0, videos: 0, itens: [],
+    descricao: "Hyundai ix35 2017. As fotos deste carro chegam em breve: peça fotos e vídeo para um consultor pelo WhatsApp.",
+  },
+  {
+    id: "corcel", marca: "Ford", modelo: "Corcel", versao: "", ano: 1976, preco: 20000,
+    tipo: "Clássico", combustivel: "Gasolina", fotos: 0, videos: 0, itens: [],
+    descricao: "Ford Corcel 1976, um clássico nacional. As fotos chegam em breve: peça fotos e vídeo para um consultor pelo WhatsApp.",
   },
 ];
 
@@ -761,6 +839,7 @@ const I = (() => {
     plate: s(`<rect x="2.5" y="7" width="19" height="10" rx="1.5"/><path d="M2.5 9.8h19"/>`),
     camera: s(`<path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>`),
     expand: s(`<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>`),
+    play: `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>`,
   };
 })();
 
@@ -775,12 +854,12 @@ const milhar = (n) => Math.round(n).toLocaleString("pt-BR");
 const brl = (n) => "R$ " + milhar(n);
 const priceHTML = (n) => `<span class="price"><small>R$</small>${milhar(n)}</span>`;
 const kmTxt = (n) => milhar(n) + " km";
-const anoTxt = (c) => `${c.anoFab}/${c.anoMod}`;
+const anoTxt = (c) => `${c.ano}`;
 const telTxt = (t) => `(${t.slice(0, 2)}) ${t.slice(2, 7)}-${t.slice(7)}`;
 const wa = (tel, msg) => `https://wa.me/55${tel}` + (msg ? `?text=${encodeURIComponent(msg)}` : "");
 const IG_URL = `https://www.instagram.com/${LOJA.instagram}/`;
 const foto = (c, i = 1, sm = false) => `img/${c.id}-${i}${sm ? "-sm" : ""}.jpg`;
-const nomeCarro = (c) => `${c.marca} ${c.modelo} ${c.versao}`;
+const nomeCarro = (c) => [c.marca, c.modelo, c.versao].filter(Boolean).join(" ");
 const byId = (id) => CARROS.find((c) => c.id === id);
 const plate = (f) => `<span class="plate" title="Final da placa ${esc(f)}"><i>BRASIL</i><b>FINAL ${esc(f)}</b></span>`;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -820,20 +899,29 @@ function copyText(txt, btn) {
 }
 
 /* ---------- componentes ---------- */
+// lista de fotos + vídeos de um carro
+const midia = (c) => [
+  ...range(c.fotos || 0).map((i) => ({ t: "img", src: foto(c, i), sm: foto(c, i, true) })),
+  ...range(c.videos || 0).map((k) => ({ t: "vid", src: `video/${c.id}-${k}.mp4`, sm: `video/${c.id}-${k}.jpg` })),
+];
+const noImg = (txt = "Fotos em breve") => `<div class="noimg">${carLine()}<span>${txt}</span></div>`;
+const subTxt = (c) => [c.versao, c.tipo].filter(Boolean).join(" · ");
+
 function card(c) {
   const fav = favs.has(c.id);
+  const specs = [c.ano, c.cor, c.cambio].filter(Boolean);
   return `<article class="card">
     <a class="card-media" href="#carro-${c.id}" tabindex="-1" aria-hidden="true">
-      <img src="${foto(c, 1, true)}" alt="" loading="lazy" decoding="async">
-      ${c.fotos > 1 ? `<img class="alt" src="${foto(c, 2, true)}" alt="" loading="lazy" decoding="async">` : ""}
-      ${c.novo ? `<span class="badge">Recém-chegado</span>` : ""}
+      ${c.fotos ? `<img src="${foto(c, 1, true)}" alt="" loading="lazy" decoding="async">${c.fotos > 1 ? `<img class="alt" src="${foto(c, 2, true)}" alt="" loading="lazy" decoding="async">` : ""}` : noImg()}
+      ${c.tipo === "Clássico" ? `<span class="badge">Clássico</span>` : ""}
+      ${c.videos ? `<span class="badge badge-dark badge-vid">${I.play} ${c.videos === 1 ? "Vídeo" : c.videos + " vídeos"}</span>` : ""}
     </a>
-    <button class="fav" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="Favoritar ${esc(c.modelo)}">${I.heart}</button>
+    <button class="fav" type="button" data-fav="${c.id}" aria-pressed="${fav}" aria-label="Favoritar ${esc(c.modelo)} ${c.ano}">${I.heart}</button>
     <div class="card-body">
       <p class="card-brand">${esc(c.marca)}</p>
       <h3 class="card-title"><a href="#carro-${c.id}">${esc(c.modelo)}</a></h3>
-      <p class="card-ver">${esc(c.versao)} · ${esc(c.cambio)}</p>
-      <ul class="card-specs"><li>${anoTxt(c)}</li><li>${kmTxt(c.km)}</li><li>${esc(c.combustivel)}</li></ul>
+      <p class="card-ver">${esc(subTxt(c))}</p>
+      <ul class="card-specs">${specs.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       <div class="card-foot">${priceHTML(c.preco)}<button class="btn btn-red btn-sm" type="button" data-buy="${c.id}">Comprar</button></div>
     </div>
   </article>`;
@@ -855,15 +943,17 @@ const pickVend = (p) => { const v = +($(`input[name="${p}-vend"]:checked`)?.valu
 const opt = (name, value, title, icon, sub, checked) => `<label class="opt"><input type="radio" name="${name}" id="${name}-${value}" value="${value}" ${checked ? "checked" : ""}><span>${icon}<b>${title}</b><small>${sub}</small></span></label>`;
 
 /* ---------- INÍCIO ---------- */
+const vitrineList = () => CARROS.filter((c) => c.vitrine && c.fotos);
+
 function viewHome() {
-  const d = CARROS.find((c) => c.destaque) || CARROS[0];
+  const d = CARROS.find((c) => c.destaque && c.fotos) || CARROS.find((c) => c.fotos) || CARROS[0];
   const tipos = uniq(CARROS.map((c) => c.tipo));
-  const marcas = uniq(CARROS.map((c) => c.marca));
+  const marcas = uniq(CARROS.map((c) => c.marca)).sort((a, b) => a.localeCompare(b));
   const minP = Math.min(...CARROS.map((c) => c.preco));
-  const faixas = [60000, 80000, 100000, 120000, 150000, 200000].filter((v) => v >= minP);
-  const novos = CARROS.filter((c) => c.novo);
-  const mosaic = [["nivus", 1], ["tcross", 2], ["veloster", 1], ["hb20", 1], ["tcross", 1], ["veloster", 2]]
-    .map(([id, i]) => byId(id) ? `<a href="${IG_URL}" target="_blank" rel="noopener" aria-label="Ver no Instagram"><img src="${foto(byId(id), i, true)}" alt="" loading="lazy"></a>` : "").join("");
+  const faixas = [30000, 50000, 80000, 100000, 130000].filter((v) => v >= minP);
+  const vit = vitrineList();
+  const mosaic = [["nivus", 2], ["tcross2026", 2], ["veloster", 1], ["fusca", 1], ["hrv", 1], ["corolla2019", 1]]
+    .map(([id, i]) => (byId(id)?.fotos >= i ? `<a href="${IG_URL}" target="_blank" rel="noopener" aria-label="Ver no Instagram"><img src="${foto(byId(id), i, true)}" alt="" loading="lazy"></a>` : "")).join("");
 
   return `
   <section class="hero" aria-labelledby="hero-t">
@@ -880,17 +970,17 @@ function viewHome() {
           <button class="btn btn-red" type="submit">${I.search} Buscar</button>
         </form>
         <ul class="hero-proof">
-          <li><span><b>${CARROS.length}</b> carros disponíveis</span></li>
+          <li><span><b>${CARROS.length}</b> carros no estoque</span></li>
           <li><span><b>${LOJA.vendedores.length}</b> consultores no WhatsApp</span></li>
           <li><span>Financiamento e troca</span></li>
         </ul>
       </div>
       <div class="hero-visual">
-        <a class="hero-photo" href="#carro-${d.id}" aria-label="Ver ${esc(nomeCarro(d))}"><img src="${foto(d, 1)}" alt="${esc(nomeCarro(d))} ${anoTxt(d)}" fetchpriority="high"></a>
+        <a class="hero-photo" href="#carro-${d.id}" aria-label="Ver ${esc(nomeCarro(d))}">${d.fotos ? `<img src="${foto(d, 1)}" alt="${esc(nomeCarro(d))} ${d.ano}" fetchpriority="high">` : noImg()}</a>
         <a class="hero-tag" href="#carro-${d.id}">
           <span class="eyebrow">Destaque da loja</span>
           <strong>${esc(d.marca)} ${esc(d.modelo)}</strong>
-          <span class="meta">${esc(d.versao)} · ${anoTxt(d)} · ${kmTxt(d.km)}</span>
+          <span class="meta">${esc([d.versao, d.ano, d.cor].filter(Boolean).join(" · "))}</span>
           ${priceHTML(d.preco)}
         </a>
         <span class="taillight" aria-hidden="true"></span>
@@ -898,22 +988,22 @@ function viewHome() {
     </div>
   </section>
 
-  ${novos.length ? `
+  ${vit.length ? `
   <section class="band band-graphite" aria-labelledby="vit-t">
     <div class="wrap showroom-wrap ${reduced ? "" : "auto"}" id="showroom">
       <div class="sec-head">
-        <div><p class="eyebrow">Vitrine</p><h2 class="h2" id="vit-t">Recém-chegados na loja</h2></div>
-        <a class="link-arrow" href="#estoque">Ver estoque completo ${I.arrowR}</a>
+        <div><p class="eyebrow">Vitrine</p><h2 class="h2" id="vit-t">Destaques da loja</h2></div>
+        <a class="link-arrow" href="#estoque">Ver os ${CARROS.length} carros ${I.arrowR}</a>
       </div>
       <div class="showroom">
         <div class="sr-stage">
-          <a class="sr-frame" id="sr-frame" href="#carro-${novos[0].id}"><span class="tagline badge">Recém-chegado</span><img id="sr-img" src="${foto(novos[0], 1)}" alt=""></a>
+          <a class="sr-frame" id="sr-frame" href="#carro-${vit[0].id}"><span class="tagline badge" id="sr-tag">${esc(vit[0].tipo)}</span><img id="sr-img" src="${foto(vit[0], 1)}" alt=""></a>
           <div class="thumbs" id="sr-thumbs" aria-label="Fotos do carro"></div>
         </div>
         <div class="sr-info" id="sr-info" aria-live="polite"></div>
       </div>
       <div class="sr-tabs" role="tablist" aria-label="Escolha o carro da vitrine">
-        ${novos.map((c, k) => `<button class="sr-tab" type="button" role="tab" id="sr-tab-${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><img src="${foto(c, 1, true)}" alt=""><span><b>${esc(c.modelo)}</b><small>${anoTxt(c)} · ${brl(c.preco)}</small></span><i class="prog" aria-hidden="true"></i></button>`).join("")}
+        ${vit.map((c, k) => `<button class="sr-tab" type="button" role="tab" id="sr-tab-${k}" aria-selected="${k === 0}" tabindex="${k === 0 ? 0 : -1}"><img src="${foto(c, 1, true)}" alt=""><span><b>${esc(c.modelo)}</b><small>${c.ano} · ${brl(c.preco)}</small></span><i class="prog" aria-hidden="true"></i></button>`).join("")}
       </div>
     </div>
   </section>` : ""}
@@ -921,7 +1011,7 @@ function viewHome() {
   <section class="band" aria-labelledby="car-t">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="eyebrow">Estoque</p><h2 class="h2" id="car-t">Todos os carros da loja</h2><p class="lead">Arraste para o lado ou use as setas. Toque no carro para ver as fotos, o preço e os detalhes.</p></div>
+        <div><p class="eyebrow">Estoque</p><h2 class="h2" id="car-t">Todos os carros da loja</h2><p class="lead">Arraste para o lado ou use as setas. Toque no carro para ver as fotos, os vídeos e o preço.</p></div>
       </div>
       <div class="carousel" id="carousel">
         <div class="car-track" id="car-track" tabindex="0" aria-label="Carros disponíveis">${CARROS.map(card).join("")}</div>
@@ -958,7 +1048,7 @@ function viewHome() {
 
       <div class="sec-head" style="margin-top:88px"><div><p class="eyebrow">Como comprar</p><h2 class="h2">Do clique à chave na mão</h2></div></div>
       <ol class="steps">
-        <li class="step"><h3>Escolha o carro</h3><p>Veja fotos, quilometragem e preço no estoque. Use os filtros para achar o carro certo.</p></li>
+        <li class="step"><h3>Escolha o carro</h3><p>Veja fotos, vídeos e preço no estoque. Use os filtros para achar o carro certo.</p></li>
         <li class="step"><h3>Clique em Comprar</h3><p>Diga se vai pagar à vista, financiar ou dar seu carro na troca.</p></li>
         <li class="step"><h3>Receba a proposta</h3><p>Sua mensagem chega pronta no WhatsApp do consultor, que responde com as condições.</p></li>
         <li class="step"><h3>Venha buscar</h3><p>Combine a visita, faça o test drive e saia com o carro.</p></li>
@@ -1005,6 +1095,7 @@ function viewHome() {
         <details><summary>Aceitam meu carro na troca?</summary><p>Aceitamos. Envie os dados e as fotos do seu carro pela página Vender meu carro. O valor da avaliação pode entrar como parte do pagamento.</p></details>
         <details><summary>Tem desconto para pagamento à vista?</summary><p>Pagamento à vista tem condição especial. Clique em Comprar, escolha À vista e consulte o desconto com o consultor.</p></details>
         <details><summary>Posso ver o carro pessoalmente?</summary><p>Pode e deve. Combine o melhor horário com um consultor para ver o carro de perto e fazer o test drive.</p></details>
+        <details><summary>Qual a quilometragem do carro?</summary><p>Peça ao consultor pelo WhatsApp: ele passa a quilometragem, a versão e mais fotos e vídeos do carro que você escolher.</p></details>
         <details><summary>O carro do site ainda está disponível?</summary><p>O estoque muda rápido. Antes de ir até a loja, confirme a disponibilidade e o valor com um consultor pelo WhatsApp.</p></details>
       </div>
     </div>
@@ -1014,17 +1105,17 @@ function viewHome() {
 function srInfo(c) {
   return `<p class="sr-brand">${esc(c.marca)}</p>
     <h3 class="sr-title">${esc(c.modelo)}</h3>
-    <p class="sr-ver">${esc(c.versao)} · ${esc(c.cor)}</p>
+    <p class="sr-ver">${esc([c.versao, c.cor].filter(Boolean).join(" · ") || c.tipo)}</p>
     <dl class="spec-row">
-      <div><dt>Ano</dt><dd>${anoTxt(c)}</dd></div>
-      <div><dt>Km</dt><dd>${milhar(c.km)}</dd></div>
-      <div><dt>Câmbio</dt><dd>${esc(c.cambio)}</dd></div>
-      <div><dt>Placa</dt><dd>${plate(c.placaFinal)}</dd></div>
+      <div><dt>Ano</dt><dd>${c.ano}</dd></div>
+      <div><dt>Cor</dt><dd>${esc(c.cor || "—")}</dd></div>
+      <div><dt>Carroceria</dt><dd>${esc(c.tipo)}</dd></div>
+      <div><dt>Placa</dt><dd>${c.placaFinal ? plate(c.placaFinal) : "—"}</dd></div>
     </dl>
     <div class="sr-price">${priceHTML(c.preco)}<span>à vista, financiado ou com troca</span></div>
     <div class="sr-actions">
       <button class="btn btn-red" type="button" data-buy="${c.id}">Quero comprar</button>
-      <a class="btn btn-ghost" href="#carro-${c.id}">Ver detalhes</a>
+      <a class="btn btn-ghost" href="#carro-${c.id}">${c.videos ? `${I.play} Fotos e vídeos` : "Ver detalhes"}</a>
     </div>`;
 }
 
@@ -1045,8 +1136,8 @@ function bindHome() {
 function bindShowroom() {
   const root = $("#showroom");
   if (!root) return;
-  const list = CARROS.filter((c) => c.novo);
-  const img = $("#sr-img"), frame = $("#sr-frame"), thumbs = $("#sr-thumbs"), info = $("#sr-info");
+  const list = vitrineList();
+  const img = $("#sr-img"), frame = $("#sr-frame"), thumbs = $("#sr-thumbs"), info = $("#sr-info"), tag = $("#sr-tag");
   const tabs = $$(".sr-tab", root);
   let cur = 0, foto_i = 1;
 
@@ -1064,8 +1155,9 @@ function bindShowroom() {
     cur = i; foto_i = 1;
     const c = list[i];
     first ? (img.src = foto(c, 1)) : swap(foto(c, 1));
-    img.alt = `${nomeCarro(c)} ${anoTxt(c)}`;
+    img.alt = `${nomeCarro(c)} ${c.ano}`;
     frame.href = `#carro-${c.id}`;
+    tag.textContent = c.tipo;
     thumbs.innerHTML = range(c.fotos).map((k) => `<button class="thumb" type="button" data-sr="${k}" aria-label="Foto ${k} de ${c.fotos}" aria-current="${k === 1}"><img src="${foto(c, k, true)}" alt="" loading="lazy"></button>`).join("");
     info.innerHTML = srInfo(c);
     tabs.forEach((t, k) => {
@@ -1112,8 +1204,7 @@ function bindCarousel() {
     const vis = Math.min(1, track.clientWidth / track.scrollWidth);
     bar.style.width = vis * 100 + "%";
     bar.style.transform = `translateX(${max > 0 ? (track.scrollLeft / max) * (1 / vis - 1) * 100 : 0}%)`;
-    btns.forEach((b) => (b.disabled = max <= 2));
-    btns.forEach((b) => (b.style.opacity = max <= 2 ? ".35" : ""));
+    btns.forEach((b) => { b.disabled = max <= 2; b.style.opacity = max <= 2 ? ".35" : ""; });
   };
   const go = (d) => {
     const max = track.scrollWidth - track.clientWidth;
@@ -1141,10 +1232,10 @@ function bindCarousel() {
 }
 
 /* ---------- ESTOQUE ---------- */
-const F = { q: "", marcas: new Set(), tipos: new Set(), cambios: new Set(), precoMax: null, anoMin: 0, kmMax: 0, favs: false, ordem: "recentes" };
+const F = { q: "", marcas: new Set(), tipos: new Set(), precoMax: null, anoMin: 0, videos: false, favs: false, ordem: "destaques" };
 function resetF() {
-  Object.assign(F, { q: "", precoMax: null, anoMin: 0, kmMax: 0, favs: false, ordem: "recentes" });
-  F.marcas.clear(); F.tipos.clear(); F.cambios.clear();
+  Object.assign(F, { q: "", precoMax: null, anoMin: 0, videos: false, favs: false, ordem: "destaques" });
+  F.marcas.clear(); F.tipos.clear();
 }
 const precoLim = () => {
   const p = CARROS.map((c) => c.preco);
@@ -1152,30 +1243,29 @@ const precoLim = () => {
 };
 const activeCount = () => {
   const [, pMax] = precoLim();
-  return F.marcas.size + F.tipos.size + F.cambios.size + (F.q ? 1 : 0) + (F.precoMax != null && F.precoMax < pMax ? 1 : 0) + (F.anoMin ? 1 : 0) + (F.kmMax ? 1 : 0) + (F.favs ? 1 : 0);
+  return F.marcas.size + F.tipos.size + (F.q ? 1 : 0) + (F.precoMax != null && F.precoMax < pMax ? 1 : 0) + (F.anoMin ? 1 : 0) + (F.videos ? 1 : 0) + (F.favs ? 1 : 0);
 };
 function filtrar() {
   const q = norm(F.q);
   const r = CARROS.filter((c) =>
-    (!q || norm(`${c.marca} ${c.modelo} ${c.versao} ${c.cor} ${c.tipo} ${c.anoMod}`).includes(q)) &&
+    (!q || norm(`${c.marca} ${c.modelo} ${c.versao} ${c.cor || ""} ${c.tipo} ${c.ano}`).includes(q)) &&
     (!F.marcas.size || F.marcas.has(c.marca)) &&
     (!F.tipos.size || F.tipos.has(c.tipo)) &&
-    (!F.cambios.size || F.cambios.has(c.cambio)) &&
     (F.precoMax == null || c.preco <= F.precoMax) &&
-    (!F.anoMin || c.anoMod >= F.anoMin) &&
-    (!F.kmMax || c.km <= F.kmMax) &&
+    (!F.anoMin || c.ano >= F.anoMin) &&
+    (!F.videos || c.videos > 0) &&
     (!F.favs || favs.has(c.id))
   );
   const o = F.ordem;
   if (o === "menor") r.sort((a, b) => a.preco - b.preco);
   else if (o === "maior") r.sort((a, b) => b.preco - a.preco);
-  else if (o === "novo") r.sort((a, b) => b.anoMod - a.anoMod || a.km - b.km);
-  else if (o === "km") r.sort((a, b) => a.km - b.km);
+  else if (o === "novo") r.sort((a, b) => b.ano - a.ano);
+  else if (o === "antigo") r.sort((a, b) => a.ano - b.ano);
   return r;
 }
 
 function chipGroup(label, key, setName) {
-  const vals = uniq(CARROS.map((c) => c[key]));
+  const vals = uniq(CARROS.map((c) => c[key])).sort((a, b) => CARROS.filter((c) => c[key] === b).length - CARROS.filter((c) => c[key] === a).length);
   return `<div class="f-group"><p class="f-label">${label}</p><div class="chips">${vals.map((v, i) =>
     `<label class="chip"><input type="checkbox" id="f-${key}-${i}" data-set="${setName}" value="${esc(v)}" ${F[setName].has(v) ? "checked" : ""}><span>${esc(v)} <em>${CARROS.filter((c) => c[key] === v).length}</em></span></label>`
   ).join("")}</div></div>`;
@@ -1184,15 +1274,15 @@ function chipGroup(label, key, setName) {
 function viewEstoque() {
   const [pMin, pMax] = precoLim();
   const pVal = Math.max(pMin, Math.min(pMax, F.precoMax ?? pMax));
-  const anos = uniq(CARROS.map((c) => c.anoMod)).sort((a, b) => b - a);
-  const kms = [20000, 40000, 60000, 80000, 100000];
+  const anos = [2025, 2020, 2015, 2010, 2000, 1990].filter((a) => CARROS.some((c) => c.ano >= a));
+  const nVid = CARROS.filter((c) => c.videos).length;
   return `
   <section class="page-head">
     ${carLine()}
     <div class="wrap">
       <p class="eyebrow">Estoque</p>
       <h1>Encontre seu carro</h1>
-      <p class="lead">Filtre por marca, carroceria, preço e quilometragem. Achou? Clique em Comprar e escolha à vista, financiamento ou troca.</p>
+      <p class="lead">${CARROS.length} carros na loja, dos clássicos aos seminovos mais novos. Achou o seu? Clique em Comprar e escolha à vista, financiamento ou troca.</p>
     </div>
   </section>
   <section class="band" style="padding-top:44px">
@@ -1201,11 +1291,10 @@ function viewEstoque() {
         <div class="f-head"><h2>Filtros</h2><button class="x" type="button" id="f-close" aria-label="Fechar filtros">${I.close}</button></div>
         <div class="f-group">
           <label class="f-label" for="f-q">Buscar</label>
-          <div class="search">${I.search}<input class="field" id="f-q" type="search" placeholder="Modelo, marca, cor..." value="${esc(F.q)}" autocomplete="off"></div>
+          <div class="search">${I.search}<input class="field" id="f-q" type="search" placeholder="Modelo, marca, cor, ano..." value="${esc(F.q)}" autocomplete="off"></div>
         </div>
         ${chipGroup("Marca", "marca", "marcas")}
         ${chipGroup("Carroceria", "tipo", "tipos")}
-        ${chipGroup("Câmbio", "cambio", "cambios")}
         <div class="f-group">
           <label class="f-label" for="f-preco">Preço até <output id="f-preco-out">${brl(pVal)}</output></label>
           <input type="range" id="f-preco" min="${pMin}" max="${pMax}" step="1000" value="${pVal}">
@@ -1215,12 +1304,11 @@ function viewEstoque() {
           <select class="field" id="f-ano"><option value="0">Qualquer ano</option>${anos.map((a) => `<option value="${a}" ${F.anoMin === a ? "selected" : ""}>${a} ou mais novo</option>`).join("")}</select>
         </div>
         <div class="f-group">
-          <label class="f-label" for="f-km">Quilometragem</label>
-          <select class="field" id="f-km"><option value="0">Qualquer km</option>${kms.map((k) => `<option value="${k}" ${F.kmMax === k ? "selected" : ""}>Até ${milhar(k)} km</option>`).join("")}</select>
-        </div>
-        <div class="f-group">
-          <p class="f-label">Favoritos</p>
-          <div class="chips"><label class="chip"><input type="checkbox" id="f-favs" ${F.favs ? "checked" : ""}><span>Só os que salvei <em id="f-favs-n">${favs.size}</em></span></label></div>
+          <p class="f-label">Mostrar</p>
+          <div class="chips">
+            ${nVid ? `<label class="chip"><input type="checkbox" id="f-videos" ${F.videos ? "checked" : ""}><span>Com vídeo <em>${nVid}</em></span></label>` : ""}
+            <label class="chip"><input type="checkbox" id="f-favs" ${F.favs ? "checked" : ""}><span>Só os que salvei <em id="f-favs-n">${favs.size}</em></span></label>
+          </div>
         </div>
         <div class="f-foot">
           <button class="btn btn-red only-m" type="button" id="f-see">Ver carros</button>
@@ -1233,11 +1321,7 @@ function viewEstoque() {
           <p id="r-count" aria-live="polite"></p>
           <label class="sort" for="f-ordem">Ordenar
             <select class="field" id="f-ordem">
-              <option value="recentes" ${F.ordem === "recentes" ? "selected" : ""}>Mais recentes</option>
-              <option value="menor" ${F.ordem === "menor" ? "selected" : ""}>Menor preço</option>
-              <option value="maior" ${F.ordem === "maior" ? "selected" : ""}>Maior preço</option>
-              <option value="novo" ${F.ordem === "novo" ? "selected" : ""}>Ano mais novo</option>
-              <option value="km" ${F.ordem === "km" ? "selected" : ""}>Menor km</option>
+              ${[["destaques", "Destaques"], ["menor", "Menor preço"], ["maior", "Maior preço"], ["novo", "Mais novo"], ["antigo", "Mais antigo"]].map(([v, t]) => `<option value="${v}" ${F.ordem === v ? "selected" : ""}>${t}</option>`).join("")}
             </select>
           </label>
         </div>
@@ -1273,7 +1357,7 @@ function bindEstoque() {
     else if (t.id === "f-q") F.q = t.value;
     else if (t.id === "f-preco") { F.precoMax = +t.value; $("#f-preco-out").textContent = brl(F.precoMax); }
     else if (t.id === "f-ano") F.anoMin = +t.value;
-    else if (t.id === "f-km") F.kmMax = +t.value;
+    else if (t.id === "f-videos") F.videos = t.checked;
     else if (t.id === "f-favs") F.favs = t.checked;
     renderResults();
   });
@@ -1299,91 +1383,101 @@ function bindEstoque() {
 
 /* ---------- PÁGINA DO CARRO ---------- */
 function viewCarro(c) {
-  const outros = CARROS.filter((x) => x.id !== c.id).slice(0, 3);
+  const outros = CARROS.filter((x) => x.id !== c.id && x.fotos).sort((a, b) => Math.abs(a.preco - c.preco) - Math.abs(b.preco - c.preco)).slice(0, 3);
   const specs = [
-    ["calendar", "Ano", anoTxt(c)], ["gauge", "Quilometragem", kmTxt(c.km)], ["gear", "Câmbio", esc(c.cambio)], ["fuel", "Combustível", esc(c.combustivel)],
-    ["drop", "Cor", esc(c.cor)], ["car", "Carroceria", esc(c.tipo)], ["door", "Portas", c.portas], ["plate", "Final da placa", plate(c.placaFinal)],
-  ];
+    ["calendar", "Ano", c.ano], ["drop", "Cor", c.cor], ["car", "Carroceria", c.tipo], ["gear", "Câmbio", c.cambio],
+    ["fuel", "Combustível", c.combustivel], ["door", "Portas", c.portas], ["plate", "Final da placa", c.placaFinal && plate(c.placaFinal)],
+  ].filter(([, , v]) => v);
+  const m = midia(c);
   const v = daVez();
+  const pedir = wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos. Pode me mandar fotos, vídeo e a quilometragem do ${nomeCarro(c)} ${c.ano} (${brl(c.preco)})?`);
+  const gallery = m.length ? `
+          <div class="g-stage" id="g-stage"></div>
+          <div class="thumbs" id="g-thumbs">${m.map((x, k) => `<button class="thumb ${x.t === "vid" ? "is-vid" : ""}" type="button" data-g="${k}" aria-label="${x.t === "vid" ? "Vídeo" : "Foto"} ${k + 1} de ${m.length}" aria-current="${k === 0}"><img src="${x.sm}" alt="" loading="lazy"></button>`).join("")}</div>`
+    : `<div class="g-empty">${carLine()}<p>As fotos deste carro chegam em breve.</p><a class="btn btn-zap btn-sm" href="${pedir}" target="_blank" rel="noopener">${I.zap} Pedir fotos e vídeo</a></div>`;
   return `
   <section class="band" style="padding-top:36px">
     <div class="wrap">
-      <nav class="crumbs" aria-label="Você está em"><a href="#inicio">Início</a><span aria-hidden="true">/</span><a href="#estoque">Estoque</a><span aria-hidden="true">/</span><span aria-current="page">${esc(c.marca)} ${esc(c.modelo)}</span></nav>
+      <nav class="crumbs" aria-label="Você está em"><a href="#inicio">Início</a><span aria-hidden="true">/</span><a href="#estoque">Estoque</a><span aria-hidden="true">/</span><span aria-current="page">${esc(c.marca)} ${esc(c.modelo)} ${c.ano}</span></nav>
       <div class="car-grid">
-        <div class="gallery">
-          <div style="position:relative">
-            <button class="g-main" type="button" aria-label="Ampliar fotos"><img id="g-img" src="${foto(c, 1)}" alt="${esc(nomeCarro(c))}, foto 1"><span class="badge badge-dark">${I.expand}<span id="g-count">1/${c.fotos}</span></span></button>
-            <button class="g-nav g-prev" type="button" data-gn="-1" aria-label="Foto anterior">${I.arrowL}</button>
-            <button class="g-nav g-next" type="button" data-gn="1" aria-label="Próxima foto">${I.arrowR}</button>
-          </div>
-          <div class="thumbs">${range(c.fotos).map((k) => `<button class="thumb" type="button" data-g="${k}" aria-label="Foto ${k} de ${c.fotos}" aria-current="${k === 1}"><img src="${foto(c, k, true)}" alt="" loading="lazy"></button>`).join("")}</div>
-        </div>
+        <div class="gallery">${gallery}</div>
         <div class="car-info">
           <div style="display:grid;gap:12px">
-            <p class="eyebrow">${esc(c.marca)}${c.novo ? " · Recém-chegado" : ""}</p>
+            <p class="eyebrow">${esc(c.marca)}${c.tipo === "Clássico" ? " · Clássico" : ""}</p>
             <h1 class="car-title">${esc(c.modelo)}</h1>
-            <p class="car-ver" style="margin-top:0">${esc(c.versao)}</p>
+            <p class="car-ver" style="margin-top:0">${esc([c.versao, c.ano].filter(Boolean).join(" · "))}</p>
           </div>
           <div class="car-price"><span class="lbl">Preço</span>${priceHTML(c.preco)}<span class="note">À vista com desconto, financiado ou com seu carro na troca.</span></div>
           <div class="car-actions">
             <button class="btn btn-red" type="button" data-buy="${c.id}">Comprar este carro</button>
             <button class="btn btn-ghost" type="button" data-buy="${c.id}" data-pag="financiamento">${I.percent} Financiar</button>
-            <button class="btn btn-ghost fav-inline" type="button" data-fav="${c.id}" aria-pressed="${favs.has(c.id)}" aria-label="Favoritar ${esc(c.modelo)}">${I.heart} Salvar</button>
+            <button class="btn btn-ghost fav-inline" type="button" data-fav="${c.id}" aria-pressed="${favs.has(c.id)}" aria-label="Favoritar ${esc(c.modelo)} ${c.ano}">${I.heart} Salvar</button>
           </div>
-          <dl class="specs">${specs.map(([ic, k, val]) => `<div><dt>${I[ic]}${k}</dt><dd>${val}</dd></div>`).join("")}</dl>
-          <a class="btn btn-zap" href="${wa(v.tel, `Olá, ${v.nome}! Vim pelo site da Lopes Veículos e quero saber mais sobre o ${nomeCarro(c)} ${anoTxt(c)} (${brl(c.preco)}).`)}" target="_blank" rel="noopener">${I.zap} Tirar dúvidas no WhatsApp</a>
+          <dl class="specs">${specs.map(([ic, k, val]) => `<div><dt>${I[ic]}${k}</dt><dd>${typeof val === "string" && val.startsWith("<") ? val : esc(val)}</dd></div>`).join("")}</dl>
+          <a class="btn btn-zap" href="${pedir}" target="_blank" rel="noopener">${I.zap} Pedir km, fotos e vídeo</a>
         </div>
       </div>
       <div class="car-more">
-        <div><h2>Sobre este carro</h2><p>${esc(c.descricao)}</p><p class="disclaimer">Fotos do próprio veículo, tiradas na loja. Confirme disponibilidade e valores com um consultor.</p></div>
-        <div><h2>Itens de destaque</h2><ul class="checks">${c.itens.map((t) => `<li>${I.check}<span>${esc(t)}</span></li>`).join("")}</ul></div>
+        <div><h2>Sobre este carro</h2><p>${esc(c.descricao)}</p><p class="disclaimer">${c.fotos ? "Fotos e vídeos do próprio veículo, feitos na loja. " : ""}Quilometragem, versão e disponibilidade: confirme com um consultor.</p></div>
+        ${c.itens?.length ? `<div><h2>Itens de destaque</h2><ul class="checks">${c.itens.map((t) => `<li>${I.check}<span>${esc(t)}</span></li>`).join("")}</ul></div>` : ""}
       </div>
     </div>
   </section>
   ${outros.length ? `<section class="band band-graphite"><div class="wrap"><div class="sec-head"><div><p class="eyebrow">Veja também</p><h2 class="h2">Outros carros da loja</h2></div><a class="link-arrow" href="#estoque">Ver estoque ${I.arrowR}</a></div><div class="grid grid-3">${outros.map(card).join("")}</div></div></section>` : ""}`;
 }
 
+function stageHTML(c, m, k) {
+  const x = m[k];
+  const nav = m.length > 1 ? `<button class="g-nav g-prev" type="button" data-gn="-1" aria-label="Anterior">${I.arrowL}</button><button class="g-nav g-next" type="button" data-gn="1" aria-label="Próxima">${I.arrowR}</button>` : "";
+  if (x.t === "vid") return `<video src="${x.src}" poster="${x.sm}" controls playsinline autoplay muted loop preload="metadata" aria-label="Vídeo do ${esc(nomeCarro(c))}"></video>${nav}`;
+  return `<button class="g-zoom" type="button" data-zoom aria-label="Ampliar foto"><img src="${x.src}" alt="${esc(nomeCarro(c))} ${c.ano}, foto ${k + 1}"><span class="badge badge-dark">${I.expand}<span>${k + 1}/${m.length}</span></span></button>${nav}`;
+}
+
 function bindCarro(c) {
-  let cur = 1;
-  const img = $("#g-img");
-  const set = (i) => {
-    cur = ((i - 1 + c.fotos) % c.fotos) + 1;
-    img.src = foto(c, cur);
-    img.alt = `${nomeCarro(c)}, foto ${cur}`;
-    $("#g-count").textContent = `${cur}/${c.fotos}`;
-    $$(".gallery .thumb").forEach((t) => t.setAttribute("aria-current", String(+t.dataset.g === cur)));
+  const m = midia(c);
+  if (!m.length) return;
+  let cur = 0;
+  const stage = $("#g-stage");
+  const set = (k) => {
+    cur = (k + m.length) % m.length;
+    stage.innerHTML = stageHTML(c, m, cur);
+    $$("#g-thumbs .thumb").forEach((t) => t.setAttribute("aria-current", String(+t.dataset.g === cur)));
+    $(`#g-thumbs .thumb[data-g="${cur}"]`)?.scrollIntoView({ block: "nearest", inline: "nearest" });
   };
   $(".gallery").addEventListener("click", (e) => {
-    const t = e.target.closest("[data-g],[data-gn],.g-main");
+    const t = e.target.closest("[data-g],[data-gn],[data-zoom]");
     if (!t) return;
-    if (t.dataset.g) set(+t.dataset.g);
+    if (t.dataset.g !== undefined) set(+t.dataset.g);
     else if (t.dataset.gn) set(cur + +t.dataset.gn);
     else openLightbox(c, cur);
   });
-  // pré-carrega as outras fotos
-  range(c.fotos).slice(1).forEach((k) => { const i = new Image(); i.src = foto(c, k); });
+  set(0);
+  m.filter((x) => x.t === "img").slice(1).forEach((x) => { const i = new Image(); i.src = x.src; });
 }
 
 function openLightbox(c, start) {
   const d = $("#lightbox");
+  const m = midia(c);
   let cur = start;
-  d.innerHTML = `<div class="lb-top"><div><p>${esc(c.marca)} ${esc(c.modelo)}</p><span id="lb-n"></span></div><button class="x" type="button" data-close aria-label="Fechar fotos">${I.close}</button></div>
-    <div class="lb-stage" id="lb-stage"><button class="g-nav g-prev" type="button" data-ln="-1" aria-label="Foto anterior">${I.arrowL}</button><img id="lb-img" alt=""><button class="g-nav g-next" type="button" data-ln="1" aria-label="Próxima foto">${I.arrowR}</button></div>
-    <div class="lb-thumbs">${range(c.fotos).map((k) => `<button class="thumb" type="button" data-lt="${k}" aria-label="Foto ${k}"><img src="${foto(c, k, true)}" alt=""></button>`).join("")}</div>`;
+  d.innerHTML = `<div class="lb-top"><div><p>${esc(c.marca)} ${esc(c.modelo)} ${c.ano}</p><span id="lb-n"></span></div><button class="x" type="button" data-close aria-label="Fechar">${I.close}</button></div>
+    <div class="lb-stage" id="lb-stage"><button class="g-nav g-prev" type="button" data-ln="-1" aria-label="Anterior">${I.arrowL}</button><div class="lb-media" id="lb-media"></div><button class="g-nav g-next" type="button" data-ln="1" aria-label="Próxima">${I.arrowR}</button></div>
+    <div class="lb-thumbs">${m.map((x, k) => `<button class="thumb ${x.t === "vid" ? "is-vid" : ""}" type="button" data-lt="${k}" aria-label="${x.t === "vid" ? "Vídeo" : "Foto"} ${k + 1}"><img src="${x.sm}" alt=""></button>`).join("")}</div>`;
   const set = (k) => {
-    cur = ((k - 1 + c.fotos) % c.fotos) + 1;
-    const im = $("#lb-img", d);
-    im.src = foto(c, cur);
-    im.alt = `${nomeCarro(c)}, foto ${cur} de ${c.fotos}`;
-    $("#lb-n", d).textContent = `Foto ${cur} de ${c.fotos}`;
+    cur = (k + m.length) % m.length;
+    const x = m[cur];
+    $("#lb-media", d).innerHTML = x.t === "vid"
+      ? `<video src="${x.src}" poster="${x.sm}" controls playsinline autoplay loop></video>`
+      : `<img src="${x.src}" alt="${esc(nomeCarro(c))}, foto ${cur + 1} de ${m.length}">`;
+    $("#lb-n", d).textContent = `${x.t === "vid" ? "Vídeo" : "Foto"} ${cur + 1} de ${m.length}`;
     $$(".thumb", d).forEach((t) => t.setAttribute("aria-current", String(+t.dataset.lt === cur)));
   };
   d.onclick = (e) => {
     const t = e.target.closest("[data-ln],[data-lt]");
     if (t) t.dataset.ln ? set(cur + +t.dataset.ln) : set(+t.dataset.lt);
-    else if (e.target === d || e.target.id === "lb-stage") d.close();
+    else if (e.target === d || e.target.id === "lb-stage" || e.target.id === "lb-media") d.close();
   };
   d.onkeydown = (e) => { if (e.key === "ArrowRight") set(cur + 1); if (e.key === "ArrowLeft") set(cur - 1); };
+  d.onclose = () => { d.innerHTML = ""; };
   let x0 = null;
   const st = $("#lb-stage", d);
   st.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
@@ -1407,8 +1501,8 @@ function openBuy(id, pag = "avista") {
   const dlg = $("#buy");
   dlg.innerHTML = `<div class="sheet-inner">
     <div class="sheet-head">
-      <img src="${foto(c, 1, true)}" alt="">
-      <div><p class="eyebrow">Comprar</p><h2 id="buy-title">${esc(c.marca)} ${esc(c.modelo)}</h2><p class="muted" style="font-size:14px">${esc(c.versao)} · ${anoTxt(c)} · ${kmTxt(c.km)}</p>${priceHTML(c.preco)}</div>
+      ${c.fotos ? `<img src="${foto(c, 1, true)}" alt="">` : `<div class="sheet-noimg">${carLine()}</div>`}
+      <div><p class="eyebrow">Comprar</p><h2 id="buy-title">${esc(c.marca)} ${esc(c.modelo)}</h2><p class="muted" style="font-size:14px">${esc([c.versao, c.ano, c.cor].filter(Boolean).join(" · "))}</p>${priceHTML(c.preco)}</div>
       <button class="x" type="button" data-close aria-label="Fechar">${I.close}</button>
     </div>
     <form class="form" id="buy-form" novalidate>
@@ -1631,7 +1725,7 @@ function viewSobre() {
   return `
   <section class="band" style="padding-top:64px">
     <div class="wrap about">
-      <div class="about-mark" aria-hidden="true">${carLine("draw")}<span class="w1">LOPES</span><span class="w2">VEÍCULOS</span></div>
+      <div class="about-mark"><video class="about-video" src="video/patio-1.mp4" poster="video/patio-1.jpg" muted loop playsinline ${reduced ? "" : "autoplay"} preload="metadata" aria-hidden="true"></video><div class="about-lock" aria-hidden="true">${carLine("draw")}<span class="w1">LOPES</span><span class="w2">VEÍCULOS</span></div><span class="badge badge-dark about-badge">${I.play} Nosso pátio</span></div>
       <div class="about-copy">
         <p class="eyebrow">Sobre nós</p>
         <h1 class="h2">Carro bom, conversa direta</h1>
@@ -1683,7 +1777,7 @@ function render() {
   let html = "", nav = h, title = "", after = null;
   if (h.startsWith("carro-")) {
     const c = byId(h.slice(6));
-    if (c) { html = viewCarro(c); nav = "estoque"; title = `${c.marca} ${c.modelo}`; after = () => bindCarro(c); }
+    if (c) { html = viewCarro(c); nav = "estoque"; title = `${c.marca} ${c.modelo} ${c.ano}`; after = () => bindCarro(c); }
   }
   if (!html) {
     if (h === "estoque") { html = viewEstoque(); title = "Estoque"; after = bindEstoque; }
